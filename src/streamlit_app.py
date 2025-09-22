@@ -15,7 +15,7 @@ from src.agents.risk_factor_agent import assess
 
 st.set_page_config(page_title="Insurance Risk Factor Agent", layout="wide")
 
-st.title("Insurance Risk Factor Agent (Demo)")
+st.title("Insurance Risk Factor Agent (Demo 'useer eligible for three-years-claim-free-discount')")
 
 st.sidebar.header("Configuration")
 product_code = st.sidebar.selectbox(
@@ -38,12 +38,7 @@ with col1:
             try:
                 result = assess(profile, product_code=product_code)
                 st.subheader("Final Assessment")
-                st.json({
-                    "product_code": result.get("product_code"),
-                    "overall_risk_tier": result.get("overall_risk_tier"),
-                    "key_factors": result.get("key_factors", []),
-                    "confidence": result.get("confidence"),
-                })
+                st.json(result)
             except Exception as e:
                 st.error(f"Agent error: {e}")
 

@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from src.agents.reasoning_engine import run_reasoning
+from src.gateway.agent_factory import init_agent, ModelGatewayError
 
 
 def _load_demo_profile() -> dict:
@@ -27,7 +28,9 @@ def _load_demo_rules() -> list:
 def test_run_reasoning_fallback_without_model():
     profile = _load_demo_profile()
     rules = _load_demo_rules()
-    result = run_reasoning(model=None, profile=profile, rules=rules, product_code="Monthly-Comfort")
+    agent = init_agent()
+    risk_factor = '3 year claim free discount'
+    result = run_reasoning(agent=agent, risk_factor=risk_factor, profile=profile, rules=rules, product_code="Monthly-Comfort")
     assert result["final_assessment"]["overall_risk_tier"] in {"LOW", "MEDIUM", "HIGH"}
     assert isinstance(result["steps"], list)
     assert result["confidence"] <= 0.5
@@ -43,7 +46,9 @@ def test_run_reasoning_with_real_model_smoke():
     profile = _load_demo_profile()
     rules = _load_demo_rules()
     try:
-        result = run_reasoning(model=None, profile=profile, rules=rules, product_code="Monthly-Comfort")
+        agent = init_agent()
+        risk_factor = '3 year claim free discount'
+        result = run_reasoning(agent=agent, risk_factor=risk_factor ,profile=profile, rules=rules, product_code="Monthly-Comfort")
     except Exception as e:  # noqa: BLE001
         pytest.skip(f"Model unavailable: {e}")
     assert isinstance(result, dict)

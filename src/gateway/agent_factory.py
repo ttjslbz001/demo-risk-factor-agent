@@ -18,21 +18,16 @@ def get_required_env() -> Dict[str, str]:
     return {"api_key": api_key, "base_url": base_url, "model_name": model_name}
 
 
-def init_model() -> Any:
+def init_agent() -> Any:
     """
-    Initialize OpenAIModel via strands-agents per design contracts.
+    Initialize a strands Agent backed by OpenAIModel and expose a .complete-compatible adapter.
     """
-    # Explicit guard so tests can simulate missing dependency
+    # Import strands components; allow tests to simulate ImportError
     try:
-        import strands_agents as _sa  # type: ignore[import-not-found,unused-import]
+        from strands import Agent  # type: ignore[import-not-found]
+        from strands.models.openai import OpenAIModel  # type: ignore[import-not-found]
     except Exception as e:  # noqa: BLE001
-        raise ModelGatewayError("strands_agents is not installed") from e
-
-    try:
-        from strands.models.openai import OpenAIModel
-    except Exception as e:  # noqa: BLE001
-        # Missing optional dependency; signal to caller to fallback
-        raise ModelGatewayError("strands_agents is not installed") from e
+        raise ModelGatewayError("strands is not installed") from e
 
     try:
         cfg = get_required_env()
@@ -40,16 +35,24 @@ def init_model() -> Any:
         raise ModelGatewayError(f"Invalid or missing environment: {e}") from e
 
     try:
+        # Build underlying model using demo configuration style
         model = OpenAIModel(
             client_args={
                 "api_key": cfg["api_key"],
                 "base_url": cfg["base_url"],
             },
-            model_name=cfg["model_name"],
+            model_id=cfg["model_name"],
+            params={
+                "max_tokens": 1000,
+                "temperature": 0.7,
+            },
         )
-        return model
+
+        agent = Agent(model=model, tools=[])
+
+        return agent
     except Exception as e:  # noqa: BLE001
-        raise ModelGatewayError(f"Failed to initialize model: {e}") from e
+        raise ModelGatewayError(f"Failed to initialize agent: {e}") from e
 
 
 def check_reachability(timeout_seconds: float = 5.0) -> bool:

@@ -4,10 +4,17 @@ from src.models.risk_profile import RiskProfile
 from src.models.assessment_result import AssessmentResult
 from src.utils.rule_loader import load_rules
 from src.agents.reasoning_engine import run_reasoning
-from src.gateway.model_gateway import init_model, ModelGatewayError
+from typing import TYPE_CHECKING
+
+from src.gateway.agent_factory import init_agent, ModelGatewayError
+
+if TYPE_CHECKING:
+    # Only for type hints; avoid runtime dependency
+    from strands import Agent  # type: ignore[import-not-found]
+    from strands.models.openai import OpenAIModel  # type: ignore[import-not-found]
 
 
-DEFAULT_RULES_DIR = "docs/insurance_risk_factor_agent/demo_rules"
+DEFAULT_RULES_DIR = "docs/insurance_risk_factor_agent/3_year_claim_free_discount"
 
 
 def assess(profile: RiskProfile, product_code: str = "Monthly-Comfort") -> AssessmentResult:
@@ -22,29 +29,18 @@ def assess(profile: RiskProfile, product_code: str = "Monthly-Comfort") -> Asses
         rules = load_rules(DEFAULT_RULES_DIR)
     except Exception as e:  # noqa: BLE001
         raise RuntimeError(f"RuleLoadError: {e}") from e
-
+    risk_factor = 'three_year_claim_free_discount'
     try:
-        try:
-            model = init_model()
-        except ModelGatewayError:
-            model = None  # Reasoning engine will fallback
-        reasoning = run_reasoning(model, profile, rules, product_code)
+        # Build agent directly; if strands not available, fall back
+        agent = init_agent()
+        
+        reasoning = run_reasoning(agent, risk_factor, profile, rules, product_code)
+        reasoning["risk_factor"] = risk_factor
     except Exception as e:  # noqa: BLE001
         raise RuntimeError(f"ReasoningError: {e}") from e
 
     try:
-        result: AssessmentResult = {
-            "product_code": product_code,
-            "overall_risk_tier": reasoning.get("final_assessment", {}).get(
-                "overall_risk_tier", "MEDIUM"
-            ),
-            "key_factors": reasoning.get("final_assessment", {}).get("key_factors", []),
-            "driver_analysis": [],
-            "vehicle_analysis": [],
-            "policy_analysis": {},
-            "reasoning_steps": reasoning.get("steps", []),
-            "confidence": reasoning.get("confidence", 0.5),
-        }
+        result = reasoning
         return result
     except Exception as e:  # noqa: BLE001
         raise RuntimeError(f"AssemblyError: {e}") from e

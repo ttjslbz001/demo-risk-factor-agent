@@ -2,8 +2,9 @@ from typing import Any, Dict, List, TypedDict
 import json
 import re
 
-from src.gateway.model_gateway import init_model, ModelGatewayError
+from src.gateway.agent_factory import init_agent, ModelGatewayError
 from src.utils.app_logging import get_logger, log_json, start_timer, elapsed_ms
+from src.agents.think_of_chain import thinks_of_chain, check_the_risk_attribute_subject
 
 # Best-effort load of local .env so model config can be read
 try:
@@ -27,10 +28,10 @@ class ReasoningOutput(TypedDict):
     confidence: float
 
 
-def _build_prompt(profile: Any, rules: Any, product_code: str) -> str:
+def _build_prompt(profile: Any, risk_factor: Any ,rules: Any, product_code: str) -> str:
     output_schema = {
         "final_assessment": {
-            "overall_risk_tier": "LOW|MEDIUM|HIGH",
+            "three_year_claim_free_discount": "Yes|No",
             "key_factors": ["string"],
         },
         "steps": [{"step": "string", "rationale": "string", "evidence": ["rule-id"]}],
@@ -49,7 +50,10 @@ def _build_prompt(profile: Any, rules: Any, product_code: str) -> str:
         + "用户画像（标准化）：\n"
         + json.dumps(profile, ensure_ascii=False)
         + "\n可用规则与条文摘要：\n"
+        + "\ncheck the risk attribute subject：\n" 
+        + check_the_risk_attribute_subject + "\n"
         + "\n".join(rule_summaries[:10])
+        # + "\n think of chian " + thinks_of_chain
         + "\n输出：严格遵循下列 JSON Schema，不要输出多余说明。\n"
         + json.dumps(output_schema, ensure_ascii=False)
     )
@@ -89,9 +93,9 @@ def _fallback_reasoning(profile: Any, product_code: str) -> ReasoningOutput:
     }
 
 
-def run_reasoning(model: Any, profile: Any, rules: Any, product_code: str) -> ReasoningOutput:
+def run_reasoning(agent: Any, risk_factor: Any, profile: Any, rules: Any, product_code: str) -> ReasoningOutput:
     try:
-        llm = model if model is not None else init_model()
+        agent_to_use = agent if agent is not None else init_agent()
     except ModelGatewayError:
         log_json(
             logger,
@@ -107,10 +111,13 @@ def run_reasoning(model: Any, profile: Any, rules: Any, product_code: str) -> Re
         {"product_code": product_code, "rules": len(rules) if isinstance(rules, list) else 0},
     )
 
-    prompt = _build_prompt(profile, rules, product_code)
+    prompt = _build_prompt(profile, risk_factor, rules, product_code)
 
     try:
-        response = llm.complete(prompt)  # type: ignore[attr-defined]
+        logger.info(f"Prompt: {prompt}")
+        response = agent_to_use(prompt) 
+        logger.info(f"Response: {response}")
+        # type: ignore[attr-defined]
         text = response.text if hasattr(response, "text") else str(response)
         try:
             data: Dict[str, Any] = json.loads(text)
