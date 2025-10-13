@@ -8,14 +8,16 @@ class ModelGatewayError(RuntimeError):
 
 def get_required_env() -> Dict[str, str]:
     # Read from current process environment only; higher layers may load .env
-    api_key = os.environ.get("TELENAV_API_KEY")
-    base_url = os.environ.get(
-        "TELENAV_BASE_URL", "https://us-ailab-api.telenav.com/v1/messages"
+    # Support both TELENAV_* and OPENAI_* environment variables for flexibility
+    api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("TELENAV_API_KEY")
+    base_url = os.environ.get("OPENAI_BASE_URL") or os.environ.get(
+        "TELENAV_BASE_URL", "https://us-ailab-api.telenav.com/v1"
     )
-    model_name = os.environ.get("MODEL_NAME", "claude3.5-bedrock")
+    model_id = os.environ.get("MODEL_ID") or os.environ.get("MODEL_NAME", "claude3.5-bedrock")
+    
     if not api_key:
-        raise ModelGatewayError("TELENAV_API_KEY is not set")
-    return {"api_key": api_key, "base_url": base_url, "model_name": model_name}
+        raise ModelGatewayError("OPENAI_API_KEY or TELENAV_API_KEY is not set")
+    return {"api_key": api_key, "base_url": base_url, "model_id": model_id}
 
 
 def init_agent() -> Any:
@@ -35,13 +37,13 @@ def init_agent() -> Any:
         raise ModelGatewayError(f"Invalid or missing environment: {e}") from e
 
     try:
-        # Build underlying model using demo configuration style
+        # Build underlying model using demo configuration style (exactly like demo_agent.py)
         model = OpenAIModel(
             client_args={
                 "api_key": cfg["api_key"],
                 "base_url": cfg["base_url"],
             },
-            model_id=cfg["model_name"],
+            model_id=cfg["model_id"],
             params={
                 "max_tokens": 1000,
                 "temperature": 0.7,

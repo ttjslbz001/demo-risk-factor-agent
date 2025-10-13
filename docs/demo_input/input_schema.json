@@ -1,0 +1,298 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Insurance Application Input Schema",
+    "type": "object",
+    "properties": {
+      "session": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "account": {
+                "type": "object",
+                "properties": {
+                  "CurrentEnv": {"type": "string", "enum": ["UAT2"]},
+                  "NumberOfResidents": {"type": "string", "pattern": "^[0-9]+$"},
+                  "PrimaryResidency": {"type": "string", "enum": ["OwnHome"]},
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "State": {"type": "string", "pattern": "^[A-Z]{2}$"},
+                      "ZipCode": {"type": "string", "pattern": "^[0-9]{5}$"}
+                    },
+                    "required": ["State", "ZipCode"]
+                  },
+                  "TimeZoneId": {"type": "string"}
+                },
+                "required": ["CurrentEnv", "NumberOfResidents", "PrimaryResidency", "address", "TimeZoneId"]
+              },
+              "policy": {
+                "type": "object", // policy level risk subject
+                "properties": { // risk subject properties
+                  "CollectionMethod": {"type": "string", "enum": ["ACP"]},
+                  "ContinuousInsuranceDiscountLevelAtCurrentPolicyInception": {"type": "string", "enum": ["None"]},
+                  "CreatedDateTime": {"type": "string", "format": "date-time"},
+                  "EFTOrACPStatusAtInitialEvaluation": {"type": "string", "enum": ["C"]},
+                  "EFTOrACPStatusMaintainedSinceInitialEvaluation": {"type": "string", "enum": ["Y", "N"]},
+                  "EarlyCancelPolicyCount": {"type": "string", "pattern": "^[0-9]+$"},
+                  "EffectiveDate": {"type": "string", "format": "date"},
+                  "EndorseCountForAddRemoveModifyVehicle": {"type": "string", "pattern": "^[0-9]+$"},
+                  "FlatCancelPolicyCount": {"type": "string", "pattern": "^[0-9]+$"},
+                  "HomeowneratInitialEvaluation": {"type": "string", "enum": ["Y", "N"]},
+                  "InceptionDate": {"type": "string", "format": "date"},
+                  "NumberOfNonPayCancelNotices": {"type": "string", "pattern": "^[0-9]+$"},
+                  "NumberOfNonPayCancels": {"type": "string", "pattern": "^[0-9]+$"},
+                  "NumberOfNonPayReinstates": {"type": "string", "pattern": "^[0-9]+$"},
+                  "PNICurrentSystemDate": {"type": "string", "format": "date"},
+                  "PaidInFullEFTOrACPStatusAtInitialEvaluation": {"type": "string", "enum": ["C"]},
+                  "PaidInFullEFTOrACPStatusMaintainedSinceInitialEvaluation": {"type": "string", "enum": ["Y", "N"]},
+                  "PriorLapseCount": {"type": "string", "pattern": "^[0-9]+$"},
+                  "PriorNovoPolicyCount": {"type": "string", "pattern": "^[0-9]+$"},
+                  "QuoteMethod": {"type": "string", "enum": ["I"]},
+                  "RewriteReason": {"type": "string", "enum": ["N"]},
+                  "Term": {"type": "string", "pattern": "^[0-9]+$"},
+                  "TotalPriorTenureWithCompany": {"type": "string", "pattern": "^[0-9]+$"},
+                  "TotalTenureWithTheCompany": {"type": "string", "pattern": "^[0-9]+$"},
+                  "sessionContext": {"type": "string"},
+                  "ubi": {
+                    "type": "object",
+                    "properties": {
+                      "ParticipationOption": {"type": "string", "enum": ["MonthlyAdjust"]}
+                    },
+                    "required": ["ParticipationOption"]
+                  },
+                  "line": {
+                    "type": "object",
+                    "properties": {
+                      "RatingFRTier": {"type": "string"},
+                      "VehicleCountatInitialEvaluation": {"type": "string", "pattern": "^[0-9]+$"},
+                      "driver": { // driver level risk subject
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "@deleted": {"type": "string", "enum": ["0"]},
+                            "@id": {"type": "string", "pattern": "^[0-9]+$"},
+                            "BirthDate": {"type": "string", "format": "date"},
+                            "CompliantWithoutInsurance": {"type": "string", "pattern": "^[0-9]+$"},
+                            "DistantStudentDiscount": {"type": "string", "enum": ["Y", "N"]},
+                            "DoesDriverRequireAFinancialResponsibilityFiling": {"type": "string", "enum": ["Y", "N"]},
+                            "DriverAddDate": {"type": "string", "format": "date"},
+                            "DriverAge": {"type": "string", "pattern": "^[0-9]+$"},
+                            "DriverLicenseStatus": {"type": "string", "enum": ["Valid"]},
+                            "DriverLicenseType": {"type": "string", "enum": ["Personal"]},
+                            "DriverTrainingDiscount": {"type": "string", "enum": ["Y", "N"]},
+                            "DriverType": {"type": "string", "enum": ["EligibleToBeRated"]},
+                            "Education": {"type": "string", "pattern": "^[0-9]+$"},
+                            "FinancialResponsibilityTier": {"type": "string"},
+                            "Gender": {"type": "string", "enum": ["M", "F"]},
+                            "GoodStudentDiscount": {"type": "string", "enum": ["Y", "N"]},
+                            "MaritalStatus": {"type": "string", "enum": ["Single", "Married"]},
+                            "MultiPolicy": {"type": "string", "enum": ["Y", "N"]},
+                            "OccupationCode": {"type": "string"},
+                            "RelationToApplicant": {"type": "string"},
+                            "YearsLicensed": {"type": "string", "pattern": "^[0-9]+$"},
+                            "YearsLicensedAtInitialEvaluation": {"type": "string", "pattern": "^[0-9]+$"},
+                            "ubi": {
+                              "type": "object",
+                              "properties": {
+                                "Compliance": {"type": "string"}
+                              }
+                            }
+                          },
+                          "required": ["@deleted", "@id", "BirthDate", "DriverAge", "Gender", "MaritalStatus"]
+                        }
+                      },
+                      "risk": { // vehicle level risk subject
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "@deleted": {"type": "string", "enum": ["0"]},
+                            "vehicle": {
+                              "type": "object",
+                              "properties": {
+                                "@id": {"type": "string", "pattern": "^[0-9]+$"},
+                                "AddFlag": {"type": "string", "enum": ["1"]},
+                                "AgeOfDamageType1Incident": {"type": "string"},
+                                "AgeOfDamageType2Incident": {"type": "string"},
+                                "AgeOfJunkTitleIncident": {"type": "string"},
+                                "AgeOfTheftIncident": {"type": "string"},
+                                "AgeOfTitleIssueIncident": {"type": "string"},
+                                "AnnualMileage": {"type": "string"},
+                                "AutomaticEmergencyBraking": {"type": "string", "enum": ["Y", "N"]},
+                                "AuxiliarySymbol": {"type": "string"},
+                                "BlindSpotWarning": {"type": "string", "enum": ["Y", "N"]},
+                                "Convertible": {"type": "string", "enum": ["Y", "N"]},
+                                "DamageType1IncidentPreOrPostOwnership": {"type": "string"},
+                                "DamageType2IncidentPreOrPostOwnership": {"type": "string"},
+                                "GaragingZip": {"type": "string", "pattern": "^[0-9]{5}$"},
+                                "JunkTitleIssueIncidentPreOrPostOwnership": {"type": "string"},
+                                "LengthOfVehicleOwnership": {"type": "string"},
+                                "MakeCode": {"type": "string"},
+                                "ModelCode": {"type": "string"},
+                                "StyleSymbol": {"type": "string"},
+                                "TheftncidentPreorPostOwnership": {"type": "string"},
+                                "TitleIssueIncidentPreOrPostOwnership": {"type": "string"},
+                                "Usage": {"type": "string", "enum": ["Commute"]},
+                                "VIN": {"type": "string"},
+                                "VehicleAddDate": {"type": "string", "format": "date"},
+                                "VehicleHistoryOrderStatus": {"type": "string", "enum": ["O"]},
+                                "Year": {"type": "string", "pattern": "^[0-9]{4}$"},
+                                "AntiTheftDevice": {"type": "string", "enum": ["Y", "N"]},
+                                "safetyscore": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Score": {"type": "string", "pattern": "^[0-9]+$"}
+                                  }
+                                },
+                                "ubi": {
+                                  "type": "object",
+                                  "properties": {
+                                    "NewBusinessNSPParticipationDiscount": {"type": "string", "enum": ["Y", "N"]},
+                                    "OptIn": {"type": "string", "enum": ["1", "0"]},
+                                    "Compliance": {"type": "string"}
+                                  }
+                                }
+                              },
+                              "required": ["@id", "VIN", "Year", "MakeCode", "ModelCode", "GaragingZip"]
+                            }
+                          },
+                          "required": ["@deleted", "vehicle"]
+                        }
+                      },
+                      "underwritingPersonalAuto": {
+                        "type": "object",
+                        "properties": {
+                          "CurrentlyHaveInsurance": {"type": "string", "enum": ["1", "0"]}
+                        }
+                      },
+                      "violations": {
+                        "type": "object",
+                        "properties": {
+                          "violation": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "@id": {"type": "string", "pattern": "^[0-9]+$"},
+                                "Code": {"type": "string"},
+                                "Date": {"type": "string", "format": "date"},
+                                "DriverID": {"type": "string", "pattern": "^[0-9]+$"},
+                                "OmittedIncident": {"type": "string", "enum": ["0", "1"]},
+                                "Origin": {"type": "string", "enum": ["Violation"]},
+                                "ReportedBy": {"type": "string", "enum": ["MVRRequest"]},
+                                "ViolationClassCode": {"type": "string"}
+                              },
+                              "required": ["@id", "Code", "Date", "DriverID"]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "required": ["RatingFRTier", "driver", "risk"]
+                  },
+                  "policyProcessing": {
+                    "type": "object",
+                    "properties": {
+                      "CurrentPolicyNumberIdentifier": {"type": "string"}
+                    }
+                  },
+                  "priorInsurance": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "EffectiveDate": {"type": "string", "format": "date"},
+                        "ExpirationDate": {"type": "string", "format": "date"},
+                        "PriorInsuranceBILimit": {"type": "string"},
+                        "PriorInsuranceBILimitNew": {"type": "string"},
+                        "RatedDriver": {"type": "string", "pattern": "^[0-9]+$"},
+                        "RelationshiptoInsured": {"type": "string"},
+                        "Source": {"type": "string", "enum": ["Manual"]},
+                        "PriorInsuranceSource": {"type": "string"},
+                        "naic": {"type": "string"},
+                        "UsedInRating": {"type": "string", "enum": ["1", "0"]}
+                      },
+                      "required": ["EffectiveDate", "ExpirationDate", "RatedDriver"]
+                    }
+                  },
+                  "shopping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "OptionName": {"type": "string"},
+                        "PaymentPlan": {"type": "string", "enum": ["Monthly"]},
+                        "PolicyBILimit": {"type": "string"},
+                        "PolicyMedPayLimit": {"type": "string"},
+                        "PolicyPDLimit": {"type": "string"},
+                        "PolicyUIMLimit": {"type": "string"},
+                        "PolicyUMLimit": {"type": "string"},
+                        "PolicyUMUIMLimit": {"type": "string"},
+                        "PolicyUMPDLimit": {"type": "string"},
+                        "shoppingrisk": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "ACPELimit": {"type": "string", "pattern": "^[0-9]+$"},
+                              "AssociatedRiskID": {"type": "string", "pattern": "^[0-9]+$"},
+                              "CollisionDeductible": {"type": "string"},
+                              "GlassCoverage": {"type": "string", "enum": ["Y", "N", "DECLINED"]},
+                              "LoanIndicator": {"type": "string", "enum": ["Y", "N"]},
+                              "OTCDeductible": {"type": "string"},
+                              "RentalLimit": {"type": "string"},
+                              "TowingLimit": {"type": "string"},
+                              "UMPDLimit": {"type": "string"}
+                            },
+                            "required": ["AssociatedRiskID"]
+                          }
+                        }
+                      },
+                      "required": ["OptionName", "PaymentPlan", "PolicyBILimit", "shoppingrisk"]
+                    }
+                  }
+                },
+                "required": ["CollectionMethod", "EffectiveDate", "InceptionDate", "line", "shopping"]
+              },
+              "policyAdmin": {
+                "type": "object",
+                "properties": {
+                  "transactions": {
+                    "type": "object",
+                    "properties": {
+                      "transaction": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "EffectiveDate": {"type": "string", "format": "date"},
+                            "HistoryID": {"type": "string", "pattern": "^[0-9]+$"},
+                            "Type": {"type": "string", "enum": ["New"]},
+                            "TypeCaption": {"type": "string", "enum": ["New Business"]}
+                          },
+                          "required": ["EffectiveDate", "HistoryID", "Type"]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "userinterface": {
+                "type": "object",
+                "properties": {
+                  "PaperLess": {"type": "string", "enum": ["Y", "N"]},
+                  "PaperlessAtInitialEvaluation": {"type": "string", "enum": ["Y", "N"]}
+                }
+              }
+            },
+            "required": ["account", "policy", "policyAdmin", "userinterface"]
+          }
+        },
+        "required": ["data"]
+      }
+    },
+    "required": ["session"]
+  }
