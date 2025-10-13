@@ -87,7 +87,17 @@ def main():
             run_id=run_id,
             metadata=memory_data["metadata"]
         )
-        memory_id = result.get('results', [{}])[0].get('id', 'unknown')
+        
+        # Extract memory ID from result (handle different response formats)
+        memory_id = 'unknown'
+        if isinstance(result, dict):
+            if 'results' in result:
+                results = result.get('results', [])
+                if results and len(results) > 0:
+                    memory_id = results[0].get('id', 'unknown') if isinstance(results[0], dict) else 'unknown'
+            elif 'id' in result:
+                memory_id = result.get('id', 'unknown')
+        
         added_memory_ids.append(memory_id)
         print(f"✅ Added: {memory_data['text'][:50]}...")
         print(f"   ID: {memory_id}")
@@ -113,8 +123,19 @@ def main():
         
         if results:
             for idx, result in enumerate(results, 1):
-                print(f"   Result {idx} (Score: {result.get('score', 'N/A'):.4f}):")
-                print(f"   {result.get('memory', 'N/A')[:80]}...")
+                # Handle both dict and string responses
+                if isinstance(result, dict):
+                    score = result.get('score', 'N/A')
+                    if isinstance(score, (int, float)):
+                        print(f"   Result {idx} (Score: {score:.4f}):")
+                    else:
+                        print(f"   Result {idx} (Score: {score}):")
+                    memory_text = result.get('memory', result.get('text', str(result)))
+                    print(f"   {str(memory_text)[:80]}...")
+                else:
+                    # If result is a string or other type
+                    print(f"   Result {idx}:")
+                    print(f"   {str(result)[:80]}...")
         else:
             print("   No results found")
         time.sleep(0.5)
@@ -130,11 +151,16 @@ def main():
     
     print(f"Found {len(all_memories)} memories for this session:")
     for idx, memory in enumerate(all_memories, 1):
-        print(f"\n{idx}. {memory.get('memory', 'N/A')[:60]}...")
-        if 'metadata' in memory:
-            category = memory['metadata'].get('category', 'N/A')
-            priority = memory['metadata'].get('priority', 'N/A')
-            print(f"   Category: {category} | Priority: {priority}")
+        # Handle both dict and string responses
+        if isinstance(memory, dict):
+            memory_text = memory.get('memory', memory.get('text', str(memory)))
+            print(f"\n{idx}. {str(memory_text)[:60]}...")
+            if 'metadata' in memory and isinstance(memory['metadata'], dict):
+                category = memory['metadata'].get('category', 'N/A')
+                priority = memory['metadata'].get('priority', 'N/A')
+                print(f"   Category: {category} | Priority: {priority}")
+        else:
+            print(f"\n{idx}. {str(memory)[:60]}...")
     
     # Update a memory
     print_section("5. Updating a Memory")
@@ -200,8 +226,18 @@ def main():
     
     print("\nRelevant risk factors found:")
     for idx, factor in enumerate(risk_factors, 1):
-        print(f"\n{idx}. {factor.get('memory', 'N/A')}")
-        print(f"   Relevance Score: {factor.get('score', 0):.4f}")
+        # Handle both dict and string responses
+        if isinstance(factor, dict):
+            memory_text = factor.get('memory', factor.get('text', str(factor)))
+            score = factor.get('score', 0)
+            print(f"\n{idx}. {memory_text}")
+            if isinstance(score, (int, float)):
+                print(f"   Relevance Score: {score:.4f}")
+            else:
+                print(f"   Relevance Score: {score}")
+        else:
+            print(f"\n{idx}. {str(factor)}")
+            print(f"   Relevance Score: N/A")
     
     # Cleanup option
     print_section("8. Cleanup (Optional)")
