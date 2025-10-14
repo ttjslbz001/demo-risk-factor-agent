@@ -46,28 +46,25 @@ class MemoryLayer:
                     "max_tokens": max_tokens,
                     "openai_base_url": "https://us-ailab-api.telenav.com/v1",
                     "api_key": "sk-nIDrG5iv1XNwFzRcaAzDgg",
-     
                     **kwargs
                 }
             },
-           "embedder": {
+            "embedder": {
                 "provider": "openai",
                 "config": {
                     "model": "ailab-embedding",
                     "openai_base_url": "https://us-ailab-api.telenav.com/v1",
                 },
             },
-           "vector_store": {
-                "vector_store": {
+            "vector_store": {
                 "provider": "milvus",
                 "config": {
                     "collection_name": "quickstart_mem0_with_milvus",
-                    "embedding_model_dims": "1536",
+                    "embedding_model_dims": 1536,
                     "url": "./milvus.db",  # Use local vector database for demo purpose
                 },
-    },
             }
-    }
+        }
         
         # Initialize memory instance
         self.memory = Memory.from_config(self.config)
@@ -102,8 +99,14 @@ class MemoryLayer:
             kwargs["run_id"] = run_id
         if metadata:
             kwargs["metadata"] = metadata
+        
+        # Format as conversational message so mem0 can extract memories
+        # mem0 expects messages in conversation format for memory extraction
+        messages = [
+            {"role": "user", "content": text}
+        ]
             
-        result = self.memory.add(text, **kwargs)
+        result = self.memory.add(messages, **kwargs)
         return result
     
     def get_memories(
@@ -136,6 +139,18 @@ class MemoryLayer:
             kwargs["limit"] = limit
             
         memories = self.memory.get_all(**kwargs)
+        
+        # Ensure we always return a list
+        if not isinstance(memories, list):
+            # If it's a dict with results key, extract that
+            if isinstance(memories, dict):
+                if 'results' in memories:
+                    return memories.get('results', [])
+                # If it's a single memory dict, wrap it in a list
+                return [memories]
+            # If it's any other type, wrap in list
+            return [memories] if memories else []
+        
         return memories
     
     def search_memories(
@@ -168,6 +183,18 @@ class MemoryLayer:
             kwargs["run_id"] = run_id
             
         results = self.memory.search(query, **kwargs)
+        
+        # Ensure we always return a list
+        if not isinstance(results, list):
+            # If it's a dict with results key, extract that
+            if isinstance(results, dict):
+                if 'results' in results:
+                    return results.get('results', [])
+                # If it's a single result dict, wrap it in a list
+                return [results]
+            # If it's any other type, wrap in list
+            return [results] if results else []
+        
         return results
     
     def update_memory(

@@ -1,4 +1,4 @@
-python-dotenv==1.0.1
+python-dotenv==1.1.1
 strands-agents==1.7.1
 streamlit==1.36.0
 requests==2.32.3
@@ -6,6 +6,10 @@ pydantic==2.8.2
 pytest==8.3.2
 types-requests==2.32.0.20240712
 mypy==1.11.1
-# Additional dependencies for multi-agent system
 
-mem0ai
+# Memory system dependencies (pinned for stability)
+mem0ai==0.1.118
+milvus-lite==2.4.9
+pymilvus==2.4.9
+protobuf==5.29.0
+marshmallow==3.23.2

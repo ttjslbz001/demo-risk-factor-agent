@@ -118,6 +118,22 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 with tab1:
     st.markdown('<div class="section-header">Add New Memory</div>', unsafe_allow_html=True)
     
+    st.info("💡 **Tip:** Mem0 uses AI to extract meaningful facts from your text. Write natural sentences with facts, preferences, or information about the user/agent.")
+    
+    with st.expander("✨ Example Content That Works Well"):
+        st.markdown("""
+        **Good examples:**
+        - "I am John Smith, 35 years old, and I work as a software engineer."
+        - "The user prefers comprehensive insurance with low deductibles."
+        - "Customer has 10 years of safe driving with no accidents or violations."
+        - "Vehicle is a 2022 Honda Accord valued at $30,000."
+        
+        **Less effective:**
+        - "Test memory" ← Too generic
+        - "Hello" ← No extractable facts
+        - "Memory123" ← No meaningful content
+        """)
+    
     with st.form("add_memory_form"):
         col1, col2 = st.columns([2, 1])
         
@@ -125,8 +141,8 @@ with tab1:
             memory_text = st.text_area(
                 "Memory Content",
                 height=150,
-                placeholder="Enter the memory content to store...",
-                help="The text content you want to store in the memory system"
+                placeholder="Example: I am John, a 45-year-old engineer with 20 years of driving experience...",
+                help="Write natural sentences with facts - Mem0 will extract meaningful memories from your text"
             )
         
         with col2:
@@ -171,11 +187,62 @@ with tab1:
                         metadata=metadata
                     )
                     
-                    st.success("✅ Memory added successfully!")
-                    st.json(result)
+                    # Parse the result
+                    memory_id = None
+                    results_list = []
+                    
+                    if isinstance(result, dict):
+                        # Check for different response formats
+                        if 'results' in result:
+                            results_list = result.get('results', [])
+                            if results_list and len(results_list) > 0:
+                                memory_count = len(results_list)
+                                memory_id = results_list[0].get('id') if isinstance(results_list[0], dict) else None
+                                st.success(f"✅ Memory added successfully! Extracted {memory_count} memories!")
+                                
+                                # Show extracted memories
+                                st.markdown("**Extracted Memories:**")
+                                for idx, mem in enumerate(results_list, 1):
+                                    if isinstance(mem, dict):
+                                        mem_text = mem.get('memory', str(mem))
+                                        mem_event = mem.get('event', 'N/A')
+                                        st.markdown(f"{idx}. {mem_text} *({mem_event})*")
+                            else:
+                                st.warning("⚠️ No memories extracted from your text!")
+                                st.markdown("""
+                                **Why this happened:**
+                                Mem0's AI couldn't find meaningful facts in your text. 
+                                
+                                **Try adding content like:**
+                                - "Customer is 35 years old and works as an engineer"
+                                - "User prefers comprehensive insurance with $500 deductible"
+                                - "Driver has 10 years accident-free history"
+                                
+                                **Avoid generic text like:**
+                                - "test", "hello", "memory 123"
+                                """)
+                        elif 'id' in result:
+                            memory_id = result.get('id')
+                            st.success(f"✅ Memory added successfully! ID: `{memory_id}`")
+                        else:
+                            st.success("✅ Memory operation completed!")
+                    else:
+                        st.success("✅ Memory added!")
+                    
+                    # Show full result for debugging
+                    with st.expander("View API Response (Debug Info)"):
+                        st.json(result)
+                    
+                    # Provide helpful next steps
+                    if results_list and len(results_list) > 0:
+                        if add_user_id or add_agent_id or add_run_id:
+                            st.info("💡 Go to the 'View All Memories' tab and click 'Load Memories' to see all your memories.")
                     
                 except Exception as e:
                     st.error(f"❌ Error adding memory: {str(e)}")
+                    import traceback
+                    with st.expander("Error Details"):
+                        st.code(traceback.format_exc())
 
 # Tab 2: Search Memories
 with tab2:
@@ -211,26 +278,37 @@ with tab2:
                     st.success(f"Found {len(results)} relevant memories")
                     
                     for idx, memory in enumerate(results, 1):
-                        with st.expander(f"Memory {idx} (Score: {memory.get('score', 'N/A')})"):
-                            st.markdown(f"**Content:** {memory.get('memory', 'N/A')}")
-                            st.markdown(f"**ID:** `{memory.get('id', 'N/A')}`")
+                        # Handle both dict and string responses
+                        if isinstance(memory, dict):
+                            score = memory.get('score', 'N/A')
+                            memory_text = memory.get('memory', memory.get('text', str(memory)))
+                            memory_id = memory.get('id', 'N/A')
                             
-                            # Display metadata
-                            if 'metadata' in memory:
-                                st.markdown("**Metadata:**")
-                                st.json(memory['metadata'])
-                            
-                            # Display identifiers
-                            col_a, col_b, col_c = st.columns(3)
-                            with col_a:
-                                if 'user_id' in memory:
-                                    st.markdown(f"👤 User: `{memory['user_id']}`")
-                            with col_b:
-                                if 'agent_id' in memory:
-                                    st.markdown(f"🤖 Agent: `{memory['agent_id']}`")
-                            with col_c:
-                                if 'run_id' in memory:
-                                    st.markdown(f"▶️ Run: `{memory['run_id']}`")
+                            with st.expander(f"Memory {idx} (Score: {score})"):
+                                st.markdown(f"**Content:** {memory_text}")
+                                st.markdown(f"**ID:** `{memory_id}`")
+                                
+                                # Display metadata
+                                if 'metadata' in memory and isinstance(memory.get('metadata'), dict):
+                                    st.markdown("**Metadata:**")
+                                    st.json(memory['metadata'])
+                                
+                                # Display identifiers
+                                col_a, col_b, col_c = st.columns(3)
+                                with col_a:
+                                    if 'user_id' in memory:
+                                        st.markdown(f"👤 User: `{memory['user_id']}`")
+                                with col_b:
+                                    if 'agent_id' in memory:
+                                        st.markdown(f"🤖 Agent: `{memory['agent_id']}`")
+                                with col_c:
+                                    if 'run_id' in memory:
+                                        st.markdown(f"▶️ Run: `{memory['run_id']}`")
+                        else:
+                            # Handle string or other non-dict responses
+                            with st.expander(f"Memory {idx}"):
+                                st.markdown(f"**Content:** {str(memory)}")
+                                st.info("(Non-dictionary format)")
                     
             except Exception as e:
                 st.error(f"❌ Error searching memories: {str(e)}")
@@ -247,6 +325,20 @@ with tab3:
     
     if st.button("📋 Load Memories", use_container_width=True):
         try:
+            # Show what we're querying
+            query_params = {}
+            if user_id:
+                query_params["user_id"] = user_id
+            if agent_id:
+                query_params["agent_id"] = agent_id
+            if run_id:
+                query_params["run_id"] = run_id
+            
+            if query_params:
+                st.info(f"🔍 Querying with filters: {query_params}")
+            else:
+                st.info("🔍 Querying all memories (no filters)")
+            
             with st.spinner("Loading memories..."):
                 memories = st.session_state.memory_layer.get_memories(
                     user_id=user_id if user_id else None,
@@ -254,6 +346,9 @@ with tab3:
                     run_id=run_id if run_id else None,
                     limit=view_limit
                 )
+            
+            # Debug info
+            st.write(f"📊 Raw API returned {type(memories).__name__}: {len(memories) if isinstance(memories, list) else 'N/A'} items")
             
             if not memories:
                 st.info("No memories found with the current filters")
@@ -265,33 +360,46 @@ with tab3:
                     with st.container():
                         st.markdown(f"### Memory {idx}")
                         
-                        col_a, col_b = st.columns([3, 1])
-                        with col_a:
-                            st.markdown(f"**Content:** {memory.get('memory', 'N/A')}")
-                            st.markdown(f"**ID:** `{memory.get('id', 'N/A')}`")
-                        
-                        with col_b:
-                            if st.button("📝 Edit", key=f"edit_{memory.get('id', idx)}"):
-                                st.session_state.edit_memory = memory
-                                st.info("Switch to 'Update/Delete' tab to edit this memory")
+                        # Handle both dict and string responses
+                        if isinstance(memory, dict):
+                            memory_text = memory.get('memory', memory.get('text', str(memory)))
+                            memory_id = memory.get('id', f'unknown_{idx}')
                             
-                            if st.button("🗑️ Delete", key=f"del_{memory.get('id', idx)}"):
-                                try:
-                                    st.session_state.memory_layer.delete_memory(
-                                        memory_id=memory.get('id'),
-                                        user_id=memory.get('user_id'),
-                                        agent_id=memory.get('agent_id'),
-                                        run_id=memory.get('run_id')
-                                    )
-                                    st.success("✅ Memory deleted!")
-                                    st.rerun()
-                                except Exception as e:
-                                    st.error(f"❌ Error: {str(e)}")
-                        
-                        # Display metadata if available
-                        if 'metadata' in memory and memory['metadata']:
-                            with st.expander("View Metadata"):
-                                st.json(memory['metadata'])
+                            col_a, col_b = st.columns([3, 1])
+                            with col_a:
+                                st.markdown(f"**Content:** {memory_text}")
+                                st.markdown(f"**ID:** `{memory_id}`")
+                            
+                            with col_b:
+                                if st.button("📝 Edit", key=f"edit_{memory_id}"):
+                                    st.session_state.edit_memory = memory
+                                    st.info("Switch to 'Update/Delete' tab to edit this memory")
+                                
+                                if st.button("🗑️ Delete", key=f"del_{memory_id}"):
+                                    try:
+                                        st.session_state.memory_layer.delete_memory(
+                                            memory_id=memory_id,
+                                            user_id=memory.get('user_id'),
+                                            agent_id=memory.get('agent_id'),
+                                            run_id=memory.get('run_id')
+                                        )
+                                        st.success("✅ Memory deleted!")
+                                        st.rerun()
+                                    except Exception as e:
+                                        st.error(f"❌ Error: {str(e)}")
+                            
+                            # Display metadata if available
+                            if 'metadata' in memory and isinstance(memory.get('metadata'), dict):
+                                with st.expander("View Metadata"):
+                                    st.json(memory['metadata'])
+                        else:
+                            # Handle string or other non-dict responses
+                            col_a, col_b = st.columns([3, 1])
+                            with col_a:
+                                st.markdown(f"**Content:** {str(memory)}")
+                                st.markdown(f"**ID:** `unknown_{idx}`")
+                            with col_b:
+                                st.info("(Non-dictionary format)")
                         
                         st.divider()
                 
