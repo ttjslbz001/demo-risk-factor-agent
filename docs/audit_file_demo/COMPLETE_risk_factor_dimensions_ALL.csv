@@ -1,0 +1,81 @@
+Table_ID,Named_Range,Category,Risk_Category_Segment1,Coverages_Segment2,Row_Count,Sheet_Name
+1,Driver_Age_Risk_Factor_BI_PD,Driver,Driver Age | BI/PD Points,BI | PD,36,Driver Age Point Factor Tbl
+2,Driver_Age_Risk_Factor_Coll,Driver,Driver Age | COLL Points,COLL | RENT,36,Driver Age Point Factor Tbl
+3,Driver_Age_Risk_Factor_Comp,Driver,Driver Age | COMP Points,COMP | LOAN,36,Driver Age Point Factor Tbl
+4,Driver_Age_Risk_Factor_Med,Driver,Driver Age | MED Points,MED | UM | UIM,36,Driver Age Point Factor Tbl
+5,Driver_Class_Risk_Factor,Driver,"Gender | Marital Status | Driver Age | Months Since Last Birthday | Ratable Spouse","BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",960,Driver Class
+6,Driver_License_Type_Risk_Factor,Driver,License Type Code | Driver Age,"BI | PD | COMP | COLL | MED | UM | UIM",30,Driver License Type Factor
+7,Driver_Training_Disc_Risk_Factor,Driver,Driver Age | Driver Training Discount,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",6,Driver Training Disc
+8,Years_Licensed_Risk_Factor,Driver,Driver Age | Years Licensed,"BI | PD | COMP | COLL | LOAN | MED | UIM | RENT",24,Years Licensed
+9,Youthful_Driver_Disc_Risk_Factor,Driver,"Driver Age | Clean Driver | Distant Student Discount | Good Student Discount | Teen Driver Discount | Driver Add Date Classification","BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",176,Youthful Driver Factor
+10,Financial_Resp_By_Clean_Risk_Factor,Driver,Financial Responsibility Tier | Clean Driver,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",60,Financial Resp by Clean Fct
+11,Financial_Resp_By_Num_Of_Drivers_Risk_Factor,Driver,Financial Responsibility Tier | Multiple Eligible to be Rated Drivers,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM",60,Financial Resp by NumOf Drivers
+12,Occupation_Education_Risk_Factor,Driver,Prior Insurance Classification | Occupation Education Rank,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM",168,OccupationEd Factor Table
+13,HhMemberTable\1_HH_Member_Risk_Factor,Driver,Vehicle Count | Household Member Count | Driver Age,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",169,HH Member Table 1
+14,HhMemberTable\2_HH_Member_Risk_Factor,Driver,Vehicle Count | Household Member Count | Driver Age,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",845,HH Member Table 2
+15,Driving_Record_Points_Risk_Point_BI_PD,Driver Points,BI/PD Points,BI | PD,101,Driving Record Points Fact Tbl
+16,Driving_Record_Points_Risk_Point_Coll,Driver Points,COLL Points,COLL | RENT,101,Driving Record Points Fact Tbl
+17,Driving_Record_Points_Risk_Point_Comp,Driver Points,COMP Points,COMP | LOAN,101,Driving Record Points Fact Tbl
+18,Driving_Record_Points_Risk_Point_Med,Driver Points,MED Points,MED | UM | UIM,101,Driving Record Points Fact Tbl
+19,Subtraction_Of_Unity_Risk_Point,Driver Points,x,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | TOW",1,Logic
+20,Vehicle_Age_Risk_Factor,Vehicle,Vehicle Risk Group Code at Initial Vehicle Evaluation | Vehicle Age at Add Date,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",110,Vehicle Age Factor
+21,Vehicle_Age_Coverage_Risk_Factor,Vehicle,Vehicle Tenure | Vehicle Age at Add Date | Multi-Car | Full Coverage on Vehicle,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",160,Vehicle Age and Cov
+22,Veh_Symbol_Risk_Factor,Vehicle,Model Year | Make | Model | Style,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM",24249,Vehicle Symbol Factor Table
+23,Aux_Symbol_Risk_Factor,Vehicle,Auxiliary Symbol,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM",1085,Auxiliary Symbol Factors
+24,Vehicle_Attributes_Rating_Risk_Factor,Vehicle,Multi-Car | Vehicle Type Code | Convertible Indicator | Vehicle Horsepower Code,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM",144,Vehicle Attributes
+25,Vehicle_History_Rating_Risk_Factor,Vehicle,Title Issue Indicator | Junk Title Indicator | Theft Indicator | No Data Available on Valid VIN Indicator | Invalid VIN Indicator,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",10,Vehicle History Factor
+26,Luxury_Veh_Risk_Factor,Vehicle,PNI Age | Luxury Vehicle on Policy | Vehicle Count,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM",210,Luxury Vehicle Factor
+27,Annual_Miles_Risk_Factor,Vehicle,Annual Miles,"BI | PD | COMP | COLL | MED | UM | UIM",14,Annual Miles
+28,Garaging_Location_Risk_Factor,Vehicle,Garaging ZIP Code,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",1562,Garaging Location Factor
+29,Length_Of_Veh_Ownership_Risk_Factor,Vehicle,Vehicle Tenure | Vehicle Age at Add Date | Length of Vehicle Ownership,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",280,Length of Veh Ownership
+30,Excess_Veh_Risk_Factor,Vehicle,Excess Vehicle,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM",2,Excess Veh Fct Table
+31,Business_Use_Surcharge_Risk_Factor,Vehicle,Business Use,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",2,Business Use Surcharge Table
+32,Financial_Resp_Filing_Surcharge_Risk_Factor,Vehicle,Financial Responsibility Filing Surcharge,"BI | PD | COMP | COLL | MED | UM | UIM",2,Financial Resp Filing Surch
+33,HH_Structure_Risk_Factor,Household,"Multi-Car | PNI Marital Status | PNI Youthful | Youthful Drivers | rated drivers | Eligible to be Rated Drivers | Rated Youthful Drivers | Rated Driver Gender","BI | PD | COMP | COLL | LOAN | MED | UM | UIM",18,HH Structure Factor Table
+34,Full_Cov_Risk_Factor,Household,Prior BI Level | Full Coverage On Policy | Multi-Car,"BI | PD | MED | UM | UIM",30,Full Cov Factor
+35,Late_Renewal_Risk_Factor,Household,Prior BI Level | Number of Lapse Days 1..10 | Number of Lapse Days 11..30 | Number of Lapse Days 31..99999,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",40,Late Renewal Factor
+36,Advance_Quote_Risk_Factor,Household,Prior Insurance Classification | Advance Shop Days | Advance Quote Discount,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",30,Advance Quote Table
+37,Risk_Group_Code_Risk_Factor,Household,Risk Group Code,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",6,Risk Group Code Factor
+38,DiscountLevel\Diamond_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification | Silver Continuous Insurance Discount at Current Policy Inception | Gold Continuous Insurance Discount at Current Policy Inception,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",63,Cont Ins Disc(Diamond)
+39,DiscountLevel\DiamondSelect_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(Diamond Select)
+40,DiscountLevel\Platinum1_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification | Silver Continuous Insurance Discount at Current Policy Inception | Gold Continuous Insurance Discount at Current Policy Inception,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",63,Cont Ins Disc(Platinum1)
+41,DiscountLevel\Platinum1Select_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(Platinum1 Select)
+42,DiscountLevel\Platinum2Select_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(PLATINUM2 SELECT)
+43,DiscountLevel\Gold_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(Gold)
+44,DiscountLevel\GoldSelect_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(Gold Select)
+45,DiscountLevel\Silver_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(Silver)
+46,DiscountLevel\SilverSelect_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(Silver Select)
+47,DiscountLevel\NoDisc_Cont_Ins_Disc_Risk_Factor,Discount,Prior Insurance Classification | Prior BI Limit Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",21,Cont Ins Disc(No Disc)
+48,Three_Year_Safe_Dr_Disc_Risk_Factor,Discount,Three Year Safe Driving Discount Eligibility | Prior BI Level | Multi-Car,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",20,Three Year Safe Dr Disc Table
+49,NB_Five_Yr_Acc_Free_Claim_Free_Disc_Risk_Factor,Discount,New Business Five Year Accident Free Discount Eligibility | Five Year Claim Free Eligibility | Prior BI Level | Multi-Car | Current Policy Tenure,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",480,NB Five Yr Acc Free Claim Free
+50,Home_MH_MC_Disc_Risk_Factor,Discount,Prior BI Level | Multi-Car | Homeowner | Mobile Home Owner,"BI | PD | COMP | COLL | MED | UM | UIM | RENT",30,HomeMH_MC Discount Table
+51,NB_NSP_Disc_Risk_Factor,Discount,NSP Participation Discount,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE | ACQ-EXP | OPS-EXP",2,NB NSP Participation Disc
+52,UW_Tier_Percent_Risk_Factor,Tier,UW Tier,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",225,Tier Factor Table
+53,FR_Tier_Risk_Factor,Tier,Financial Responsibility Tier | Prior Insurance Classification,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT",90,FR Tier Factor
+54,Base_Rates_Risk_Rate,Rate,x,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE | ACQ-EXP | OPS-EXP",1,Base Rates
+55,Monthly_Rate_Risk_Factor,Rate,Trend Months,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",50,Monthly Rate Factor
+56,Policy_Term_Risk_Factor,Rate,Policy Term,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE | ACQ-EXP | OPS-EXP",1,Policy Term
+57,Coverage_Selection_COLL_Risk_Factor,Coverage,COLL Deductible at Initial Evaluation | COLL Deductible,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",36,Cov Selection Fact Table - COLL
+58,Coverage_Selection_COMP_Risk_Factor,Coverage,COMP Deductible at Initial Evaluation | Glass Coverage at Initial Evaluation | COMP Deductible | Glass Coverage,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE",121,Cov Selection Fact Table - COMP
+59,Limit_And_Ded_Risk_Factor_BI,Limit,Prior Insurance Indicator | BI Limit,BI,8,Limit & Ded Factors
+60,Limit_And_Ded_Risk_Factor_PD,Limit,PD Limit,PD,5,Limit & Ded Factors
+61,Limit_And_Ded_Risk_Factor_Comp,Limit,COMP Deductible | Glass Coverage,COMP,11,Limit & Ded Factors
+62,Limit_And_Ded_Risk_Factor_Coll,Limit,COLL Deductible,COLL,6,Limit & Ded Factors
+63,Limit_And_Ded_Risk_Factor_Med,Limit,Med Limit,MED,7,Limit & Ded Factors
+64,Limit_And_Ded_Risk_Factor_UM,Limit,UM Limit,UM,5,Limit & Ded Factors
+65,Limit_And_Ded_Risk_Factor_UIM,Limit,UIM Limit,UIM,5,Limit & Ded Factors
+66,Limit_And_Ded_Risk_Factor_Loan,Limit,LOAN Limit,LOAN,2,Limit & Ded Factors
+67,Limit_And_Ded_Risk_Factor_Rent,Limit,RENT Limit,RENT,4,Limit & Ded Factors
+68,Limit_And_Ded_Risk_Factor_ACPE,Limit,ACPE Limit,ACPE,11,Limit & Ded Factors
+69,OpEx1_Risk_Factor,Operational,Prior Insurance Classification | Financial Responsibility Tier,OPS-EXP,90,OpEx_Factor 1
+70,OpEx2_Risk_Factor,Operational,Eligible to be Rated Drivers | Vehicle Count,OPS-EXP,16,OpEx_Factor 2
+71,OpEx3_Risk_Factor,Operational,PNI Age,OPS-EXP,15,OpEx_Factor 3
+72,OpEx5_Risk_Factor,Operational,Vehicle Count | Number of Vehicle Addition Endorsements,OPS-EXP,20,OpEx_Factor 5
+73,OpEx6_Risk_Factor,Operational,Number of Non-Pay Cancels | Number of Non-Pay Reinstates,OPS-EXP,10,OpEx_Factor 6
+74,OpEx8_Risk_Factor,Operational,Prior Insurance Activity Tier,OPS-EXP,30,OpEx_Factor 8
+75,Acq_Exp_Factor_AE1_Risk_Factor,Operational,Vehicle Count at Initial Evaluation | Full Coverage Status at Initial Evaluation | Prior Insurance Classification,ACQ-EXP,18,AE1
+76,Acq_Exp_Factor_AE2_Risk_Factor,Operational,Prior Insurance Activity Tier,ACQ-EXP,30,AE2
+77,Bad_Debt_Fr_Risk_Factor,Operational,Prior Insurance Classification | Financial Responsibility Tier,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE | ACQ-EXP | OPS-EXP",90,Bad Debt FR Fct Tbl
+78,CurrentlyMonitoring\Yes_NSP_Default_Safety_Score_Risk_Factor,UBI/Telematics,Default Safety Score | Months Since Monitoring,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE | ACQ-EXP | OPS-EXP",110,NSP Safety Score Fct
+79,CurrentlyMonitoring\No_NSP_Default_Safety_Score_Risk_Factor,UBI/Telematics,Default Safety Score | Months Since Monitoring,"BI | PD | COMP | COLL | LOAN | MED | UM | UIM | RENT | ACPE | ACQ-EXP | OPS-EXP",1100,NSP - Not Monitoring
+

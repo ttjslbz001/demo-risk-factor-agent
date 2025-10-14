@@ -135,11 +135,8 @@ class MemoryLayer:
         if limit:
             kwargs["limit"] = limit
             
-        response = self.memory.get_all(**kwargs)
-        # mem0 returns {"results": [...]} format, extract the list
-        if isinstance(response, dict) and 'results' in response:
-            return response['results']
-        return response if isinstance(response, list) else []
+        memories = self.memory.get_all(**kwargs)
+        return memories
     
     def search_memories(
         self,
@@ -170,11 +167,8 @@ class MemoryLayer:
         if run_id:
             kwargs["run_id"] = run_id
             
-        response = self.memory.search(query, **kwargs)
-        # mem0 returns {"results": [...]} format, extract the list
-        if isinstance(response, dict) and 'results' in response:
-            return response['results']
-        return response if isinstance(response, list) else []
+        results = self.memory.search(query, **kwargs)
+        return results
     
     def update_memory(
         self,
@@ -191,17 +185,25 @@ class MemoryLayer:
         Args:
             memory_id: The ID of the memory to update
             text: New text content
-            user_id: User identifier (not used by mem0 update, kept for API consistency)
-            agent_id: Agent identifier (not used by mem0 update, kept for API consistency)
-            run_id: Run identifier (not used by mem0 update, kept for API consistency)
+            user_id: User identifier
+            agent_id: Agent identifier
+            run_id: Run identifier
             metadata: Updated metadata
             
         Returns:
             Dictionary containing the result of the update operation
         """
-        # Note: mem0 update() only accepts memory_id and data
-        # user_id, agent_id, run_id are kept in signature for API consistency
-        result = self.memory.update(memory_id, data=text)
+        kwargs = {"memory_id": memory_id}
+        if user_id:
+            kwargs["user_id"] = user_id
+        if agent_id:
+            kwargs["agent_id"] = agent_id
+        if run_id:
+            kwargs["run_id"] = run_id
+        if metadata:
+            kwargs["metadata"] = metadata
+            
+        result = self.memory.update(text, **kwargs)
         return result
     
     def delete_memory(
@@ -274,16 +276,22 @@ class MemoryLayer:
         
         Args:
             memory_id: The ID of the memory
-            user_id: User identifier (not used by mem0 history, kept for API consistency)
-            agent_id: Agent identifier (not used by mem0 history, kept for API consistency)
-            run_id: Run identifier (not used by mem0 history, kept for API consistency)
+            user_id: User identifier
+            agent_id: Agent identifier
+            run_id: Run identifier
             
         Returns:
             List of history entries for the memory
         """
-        # Note: mem0 history() only accepts memory_id
-        # user_id, agent_id, run_id are kept in signature for API consistency
-        history = self.memory.history(memory_id)
+        kwargs = {"memory_id": memory_id}
+        if user_id:
+            kwargs["user_id"] = user_id
+        if agent_id:
+            kwargs["agent_id"] = agent_id
+        if run_id:
+            kwargs["run_id"] = run_id
+            
+        history = self.memory.history(**kwargs)
         return history
 
 

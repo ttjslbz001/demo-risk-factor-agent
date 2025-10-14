@@ -1,0 +1,3454 @@
+{
+    "workbook_id": "AZ_2025-07-15_v250",
+    "named_ranges_count": 431,
+    "named_ranges": [
+      {
+        "name": "_xleta.DATE",
+        "scope": "Workbook",
+        "reference": "#NAME?",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "_xleta.DISC",
+        "scope": "Workbook",
+        "reference": "#NAME?",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "_xleta.FIXED",
+        "scope": "Workbook",
+        "reference": "#NAME?",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "_xleta.NOT",
+        "scope": "Workbook",
+        "reference": "#NAME?",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "_xleta.RIGHT",
+        "scope": "Workbook",
+        "reference": "#NAME?",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "_xleta.T",
+        "scope": "Workbook",
+        "reference": "#NAME?",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Accident_Count_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$OD$3:$PA$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Accident_Violation_Evaluation_Period",
+        "scope": "Workbook",
+        "reference": "Logic!$I$4",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Accidents_and_Violations_Mapping_Driver",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$B$11:$B$56,'Violation Points Table'!$C$11:$N$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "ACPE_Limit_Mapping_Vehicle",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$F$53:$F$64,'Limit & Ded Factors'!$G$53:$G$64",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Acq_Exp_Factor_AE1_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'AE1'!$B$10:$D$28,'AE1'!$E$10:$E$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Acq_Exp_Factor_AE2_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'AE2'!$B$10:$B$40,'AE2'!$C$10:$C$40",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Additional_BI_PD_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$E$12:$E$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Additional_COLL_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$K$12:$K$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Additional_COMP_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$H$12:$H$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Additional_MED_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$N$12:$N$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Advance_Quote_Discount_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$QX$3:$RE$9",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Advance_Quote_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Advance Quote Table'!$B$10:$D$40,'Advance Quote Table'!$E$10:$N$40",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Age_and_Credit_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$GA$3:$GS$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Annual_Miles",
+        "scope": "Workbook",
+        "reference": "Logic!$AF$19:$AF$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Annual_Miles_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Annual Miles'!$B$9:$B$23,'Annual Miles'!$C$9:$I$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Automatic_Card_Payment_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "Logic!$SC$6:$SD$10,Logic!$SE$6:$SE$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Aux_Symbol_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Auxiliary Symbol Factors'!$B$9:$B$1094,'Auxiliary Symbol Factors'!$C$9:$J$1094",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Average_By_Number_Of_Vehicles_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "Logic!$RL$6:$RL$15,Logic!$RM$6:$RM$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Average_Length_Of_Prior_Insurance",
+        "scope": "Workbook",
+        "reference": "Logic!$BJ$19:$BJ$27",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Bad_Debt_Fr_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Bad Debt FR Fct Tbl'!$B$9:$C$99,'Bad Debt FR Fct Tbl'!$D$9:$O$99",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Base_Rates_Risk_Rate",
+        "scope": "Workbook",
+        "reference": "'Base Rates'!$B$9:$B$10,'Base Rates'!$C$9:$N$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Bodily_Injury",
+        "scope": "Workbook",
+        "reference": "Logic!$EH$19:$EH$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Business_Use_Surcharge_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Business Use Surcharge Table'!$B$10:$B$12,'Business Use Surcharge Table'!$C$10:$L$12",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Calculation_Order_Steps",
+        "scope": "Workbook",
+        "reference": "Logic!$RP$18:$RP$66,Logic!$RR$18:$RS$125",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Chargeable_Period_Points_Assignment",
+        "scope": "Workbook",
+        "reference": "Logic!$I$7",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Clean_at_Inception_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$AN$3:$BB$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Company",
+        "scope": "Workbook",
+        "reference": "ROC!$B$1",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "ContInsDiscLevels",
+        "scope": "Workbook",
+        "reference": "Logic!$AB$19:$AC$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Continuous_Insurance_New_Discount_Level_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$FP$3:$FX$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Coverage_Selection_COLL_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cov Selection Fact Table - COLL'!$B$9:$C$45,'Cov Selection Fact Table - COLL'!$D$9:$M$45",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Coverage_Selection_COMP_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cov Selection Fact Table - COMP'!$B$9:$E$130,'Cov Selection Fact Table - COMP'!$F$9:$O$130",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "CurrentlyMonitoring\\No_NSP_Default_Safety_Score_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'NSP - Not Monitoring'!$B$9:$C$1109,'NSP - Not Monitoring'!$D$9:$O$1109",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "CurrentlyMonitoring\\Yes_NSP_Default_Safety_Score_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'NSP Safety Score Fct'!$B$9:$C$119,'NSP Safety Score Fct'!$D$9:$O$119",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Data_Parser_Tables",
+        "scope": "Workbook",
+        "reference": "Logic!$RK$3:$SG$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Declined",
+        "scope": "Workbook",
+        "reference": "Logic!$F$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Diminishing_Deductible_Option_Eligibility",
+        "scope": "Workbook",
+        "reference": "Logic!$DV$3:$EE$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\Diamond_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Diamond)'!$B$10:$E$73,'Cont Ins Disc(Diamond)'!$F$10:$N$73",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\DiamondSelect_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Diamond Select)'!$B$10:$C$31,'Cont Ins Disc(Diamond Select)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\Gold_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Gold)'!$B$10:$C$31,'Cont Ins Disc(Gold)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\GoldSelect_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Gold Select)'!$B$10:$C$31,'Cont Ins Disc(Gold Select)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\NoDisc_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(No Disc)'!$B$10:$C$31,'Cont Ins Disc(No Disc)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\Platinum1_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Platinum1)'!$B$10:$E$73,'Cont Ins Disc(Platinum1)'!$F$10:$N$73",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\Platinum1Select_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Platinum1 Select)'!$B$10:$C$31,'Cont Ins Disc(Platinum1 Select)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\Platinum2Select_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(PLATINUM2 SELECT)'!$B$10:$C$31,'Cont Ins Disc(PLATINUM2 SELECT)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\Silver_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Silver)'!$B$10:$C$31,'Cont Ins Disc(Silver)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DiscountLevel\\SilverSelect_Cont_Ins_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Cont Ins Disc(Silver Select)'!$B$10:$C$31,'Cont Ins Disc(Silver Select)'!$D$10:$L$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "DL_Types",
+        "scope": "Workbook",
+        "reference": "Logic!$CG$19:$CH$38",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_1",
+        "scope": "Workbook",
+        "reference": "Inputs!$B$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_2",
+        "scope": "Workbook",
+        "reference": "Inputs!$L$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_3",
+        "scope": "Workbook",
+        "reference": "Inputs!$V$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_4",
+        "scope": "Workbook",
+        "reference": "Inputs!$AF$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_5",
+        "scope": "Workbook",
+        "reference": "Inputs!$AP$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_6",
+        "scope": "Workbook",
+        "reference": "Inputs!$AZ$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_7",
+        "scope": "Workbook",
+        "reference": "Inputs!$BJ$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_8",
+        "scope": "Workbook",
+        "reference": "Inputs!$BT$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_9",
+        "scope": "Workbook",
+        "reference": "Inputs!$CD$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_Age_Risk_Factor_BI_PD",
+        "scope": "Workbook",
+        "reference": "'Driver Age Point Factor Tbl'!$B$10:$C$46,'Driver Age Point Factor Tbl'!$D$10:$E$46",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_Age_Risk_Factor_Coll",
+        "scope": "Workbook",
+        "reference": "'Driver Age Point Factor Tbl'!$N$10:$O$46,'Driver Age Point Factor Tbl'!$P$10:$Q$46",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_Age_Risk_Factor_Comp",
+        "scope": "Workbook",
+        "reference": "'Driver Age Point Factor Tbl'!$H$10:$I$46,'Driver Age Point Factor Tbl'!$J$10:$K$46",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_Age_Risk_Factor_Med",
+        "scope": "Workbook",
+        "reference": "'Driver Age Point Factor Tbl'!$U$10:$V$46,'Driver Age Point Factor Tbl'!$W$10:$Y$46",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_Calculation_Order",
+        "scope": "Workbook",
+        "reference": "Logic!$RP$19:$RP$50",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_Class_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Driver Class'!$B$11:$F$971,'Driver Class'!$G$11:$O$971",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_License_Type_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$CF$18:$CJ$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_License_Type_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Driver License Type Factor'!$B$10:$C$40,'Driver License Type Factor'!$D$10:$J$40",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driver_Training_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Driver Training Disc'!$B$10:$C$16,'Driver Training Disc'!$D$10:$L$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driving_Record_Points_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$HM$3:$NH$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driving_Record_Points_Risk_Point_BI_PD",
+        "scope": "Workbook",
+        "reference": "'Driving Record Points Fact Tbl'!$B$11:$B$112,'Driving Record Points Fact Tbl'!$C$11:$D$112",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driving_Record_Points_Risk_Point_Coll",
+        "scope": "Workbook",
+        "reference": "'Driving Record Points Fact Tbl'!$N$11:$N$112,'Driving Record Points Fact Tbl'!$O$11:$P$112",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driving_Record_Points_Risk_Point_Comp",
+        "scope": "Workbook",
+        "reference": "'Driving Record Points Fact Tbl'!$H$11:$H$112,'Driving Record Points Fact Tbl'!$I$11:$J$112",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Driving_Record_Points_Risk_Point_Med",
+        "scope": "Workbook",
+        "reference": "'Driving Record Points Fact Tbl'!$U$11:$U$112,'Driving Record Points Fact Tbl'!$V$11:$X$112",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Education_Level",
+        "scope": "Workbook",
+        "reference": "Logic!$RL$19:$RL$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Education_Level_input_possibilities",
+        "scope": "Workbook",
+        "reference": "Logic!$RK$18:$RL$50",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Eft_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "Logic!$SC$6:$SD$10,Logic!$SF$6:$SF$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Eligible_to_be_rated_logic",
+        "scope": "Workbook",
+        "reference": "Logic!$EZ$6:$EZ$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Employment_Description",
+        "scope": "Workbook",
+        "reference": "Logic!$I$18:$I$390",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Employment_Status",
+        "scope": "Workbook",
+        "reference": "Logic!$RB$19:$RB$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Excess_Veh_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Excess Veh Fct Table'!$B$10:$B$12,'Excess Veh Fct Table'!$C$10:$J$12",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "excess_vehicle_logic",
+        "scope": "Workbook",
+        "reference": "Logic!$K$3:$S$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Extended_Accident_Evaluation_Period",
+        "scope": "Workbook",
+        "reference": "Logic!$I$13",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Financial_Resp_By_Clean_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Financial Resp by Clean Fct'!$B$10:$C$70,'Financial Resp by Clean Fct'!$D$10:$L$70",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Financial_Resp_By_Num_Of_Drivers_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Financial Resp by NumOf Drivers'!$B$10:$C$70,'Financial Resp by NumOf Drivers'!$D$10:$K$70",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Financial_Resp_Filing_Surcharge_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Financial Resp Filing Surch'!$B$10:$B$12,'Financial Resp Filing Surch'!$C$10:$I$12",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "financial_responsibility_tier_mapping_household",
+        "scope": "Workbook",
+        "reference": "Logic!$RW$18:$RX$348,Logic!$RY$18:$RY$348",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "First_BI_PD_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$C$12:$C$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "First_COLL_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$I$12:$I$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "First_COMP_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$F$12:$F$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "First_MED_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$L$12:$L$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Five_Year_Claim_Free_Discount",
+        "scope": "Workbook",
+        "reference": "Logic!$CU$3:$DJ$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "FR_Tier",
+        "scope": "Workbook",
+        "reference": "Logic!$DZ$19:$DZ$48",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "FR_Tier_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'FR Tier Factor'!$B$10:$C$100,'FR Tier Factor'!$D$10:$L$100",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Full_Cov_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Full Cov Factor'!$B$10:$D$40,'Full Cov Factor'!$E$10:$I$40",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "full_coverage_status_logic",
+        "scope": "Workbook",
+        "reference": "Logic!$DL$3:$DT$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Garaging_Location_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Garaging Location Factor'!$B$10:$B$1572,'Garaging Location Factor'!$C$10:$L$1572",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "HH_Structure_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'HH Structure Factor Table'!$B$10:$I$28,'HH Structure Factor Table'!$J$10:$Q$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "HhMemberTable\\1_HH_Member_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'HH Member Table 1'!$B$10:$D$179,'HH Member Table 1'!$E$10:$M$179",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "HhMemberTable\\2_HH_Member_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'HH Member Table 2'!$B$10:$D$855,'HH Member Table 2'!$E$10:$M$855",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Home_MH_MC_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'HomeMH_MC Discount Table'!$B$10:$E$40,'HomeMH_MC Discount Table'!$F$10:$M$40",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Household_Member_Table_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$ER$3:$FF$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Household_Members",
+        "scope": "Workbook",
+        "reference": "Logic!$FB$6:$FB$15,Logic!$FE$8:$FE$9",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Household_Structure_Code_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "'HH Structure Factor Table'!$B$10:$I$28,'HH Structure Factor Table'!$R$10:$R$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_CY",
+        "scope": "Workbook",
+        "reference": "10001",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_CY1",
+        "scope": "Workbook",
+        "reference": "10002",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_CY2",
+        "scope": "Workbook",
+        "reference": "10003",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_FY",
+        "scope": "Workbook",
+        "reference": "1001",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_FY1",
+        "scope": "Workbook",
+        "reference": "1002",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_FY2",
+        "scope": "Workbook",
+        "reference": "1003",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_Q",
+        "scope": "Workbook",
+        "reference": "501",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_Q1",
+        "scope": "Workbook",
+        "reference": "502",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_FWD_Q2",
+        "scope": "Workbook",
+        "reference": "503",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_LATESTK",
+        "scope": "Workbook",
+        "reference": "1000",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_LATESTQ",
+        "scope": "Workbook",
+        "reference": "500",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_LTMMONTH",
+        "scope": "Workbook",
+        "reference": "120000",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_TODAY",
+        "scope": "Workbook",
+        "reference": "0",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "IQ_YTDMONTH",
+        "scope": "Workbook",
+        "reference": "130000",
+        "comments": "",
+        "hidden": true,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Late_Renewal_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Late Renewal Factor'!$B$10:$E$50,'Late Renewal Factor'!$F$10:$O$50",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "length_of_ownership",
+        "scope": "Workbook",
+        "reference": "Logic!$AO$19:$AO$39",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "length_of_residency",
+        "scope": "Workbook",
+        "reference": "Logic!$BD$19:$BD$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Length_Of_Veh_Ownership_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Length of Veh Ownership'!$B$10:$D$290,'Length of Veh Ownership'!$E$10:$M$290",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "license_status",
+        "scope": "Workbook",
+        "reference": "Logic!$W$19:$W$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedACPELimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$B$54:$B$64",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedBILimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$C$11:$C$14",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedCollDed",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$F$32:$F$37",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedCollLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$F$32:$F$37",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedCompDed",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$B$32:$B$42",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedCompLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$B$32:$B$42",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedGlassCoverage",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$C$32:$C$42",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedLoanLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$I$32:$I$33",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedMedLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$I$11:$I$17",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedPDLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$F$11:$F$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedPIPLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$S$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedRentLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$P$32:$P$35",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedTow",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$S$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedUIMLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$L$11:$L$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedUMBILimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$S$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedUMLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$P$11:$P$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "LimDedUMPDLimit",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$S$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_ACPE",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$B$53:$B$64,'Limit & Ded Factors'!$C$53:$C$64",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_BI",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$B$10:$C$18,'Limit & Ded Factors'!$D$10:$D$18",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_Coll",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$F$31:$F$37,'Limit & Ded Factors'!$G$31:$G$37",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_Comp",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$B$31:$C$42,'Limit & Ded Factors'!$D$31:$D$42",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_Loan",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$I$31:$I$33,'Limit & Ded Factors'!$J$31:$J$33",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_Med",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$I$10:$I$17,'Limit & Ded Factors'!$J$10:$J$17",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_PD",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$F$10:$F$15,'Limit & Ded Factors'!$G$10:$G$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_Rent",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$P$31:$P$35,'Limit & Ded Factors'!$Q$31:$Q$35",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_UIM",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$L$10:$L$15,'Limit & Ded Factors'!$M$10:$M$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Limit_And_Ded_Risk_Factor_UM",
+        "scope": "Workbook",
+        "reference": "'Limit & Ded Factors'!$P$10:$P$15,'Limit & Ded Factors'!$Q$10:$Q$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "lookup_code",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$B$12:$B$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Loss_Type",
+        "scope": "Workbook",
+        "reference": "Logic!$HF$17:$HR$18",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "lowest_coll_ded_option",
+        "scope": "Workbook",
+        "reference": "Logic!$DW$6:$EE$14",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Luxury_Veh_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Luxury Vehicle Factor'!$B$10:$D$220,'Luxury Vehicle Factor'!$E$10:$L$220",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Luxury_Vehicle_Indicator_Mapping_Vehicle",
+        "scope": "Workbook",
+        "reference": "'Vehicle Symbol Factor Table'!$B$10:$E$24259,'Vehicle Symbol Factor Table'!$N$10:$N$24259",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Luxury_Vehicle_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$FH$3:$FN$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Male_Female",
+        "scope": "Workbook",
+        "reference": "Logic!$E$19:$E$21",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Marital_Status",
+        "scope": "Workbook",
+        "reference": "Logic!$I$19:$I$24",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AA_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$10:$C$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AA_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$11:$A$13",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AA_Value_Map\\Household\\Matrix_EligibleToBeRatedDrivers",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$10:$C$13",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AB_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$20:$D$20",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AB_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$21:$A$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AB_Value_Map\\Household\\Matrix_NovoViolations",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$20:$D$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AC_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$27:$J$27",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AC_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$28:$A$33",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AC_Value_Map\\Household\\Matrix_MatrixABValue",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$27:$J$33",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AD_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$43:$G$43",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AD_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$44:$A$97",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AD_Value_Map\\Household\\Matrix_RiskGroupCode",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$43:$G$97",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AE_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$155:$E$155",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AE_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$156:$A$160",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AE_Value_Map\\Household\\Matrix_NovoDwiS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$155:$E$160",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AF_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$164:$E$164",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AF_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$165:$A$169",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AF_Value_Map\\Household\\Matrix_NovoMinS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$164:$E$169",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AG_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$173:$U$173",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AG_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$174:$A$193",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AG_Value_Map\\Household\\Matrix_MatrixAFValue",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$173:$U$193",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AH_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$197:$E$197",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AH_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$198:$A$202",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AH_Value_Map\\Household\\Matrix_NovoAafS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$197:$E$202",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AI_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$206:$E$206",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AI_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$207:$A$211",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AI_Value_Map\\Household\\Matrix_TotalPuaS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$206:$E$211",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AJ_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$215:$U$215",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AJ_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$216:$A$235",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AJ_Value_Map\\Household\\Matrix_MatrixAIValue",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$215:$U$235",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AK_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$239:$E$239",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AK_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$240:$A$244",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AK_Value_Map\\Household\\Matrix_TotalPunS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$239:$E$244",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AL_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$248:$E$248",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AL_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$249:$A$252",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AL_Value_Map\\Household\\Matrix_NovoMajS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$248:$E$252",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AM_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$256:$Q$256",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AM_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$257:$A$276",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AM_Value_Map\\Household\\Matrix_MatrixALValue",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$256:$Q$276",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AN_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$280:$F$280",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AN_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$281:$A$285",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AN_Value_Map\\Household\\Matrix_NonNovoCmuS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$280:$F$285",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AO_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$289:$E$289",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AO_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$290:$A$294",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AO_Value_Map\\Household\\Matrix_NovoNafS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$289:$E$294",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AP_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$298:$U$298",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AP_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$299:$A$323",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AP_Value_Map\\Household\\Matrix_MatrixAOValue",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$298:$U$323",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AQ_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$327:$D$327",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AQ_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$328:$A$330",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AQ_Value_Map\\Household\\Matrix_PriorInsuranceClassification",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$327:$D$330",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AR_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$334:$E$334",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AR_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$335:$A$338",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AR_Value_Map\\Household\\Matrix_NovoCmpS",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$334:$E$338",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AS_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$B$342:$Q$342",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AS_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$343:$A$351",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_AS_Value_Map\\Household\\Matrix_MatrixARValue",
+        "scope": "Workbook",
+        "reference": "'Step 1'!$A$342:$Q$351",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BA_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$9:$E$9",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BA_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$10:$A$12",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BA_Value_Map\\Household\\Matrix_RewriteReason",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$9:$E$12",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BB_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$16:$C$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BB_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$17:$A$22",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BB_Value_Map\\Household\\Matrix_EligibleToBeRatedDrivers",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$16:$C$22",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BC_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$26:$M$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BC_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$27:$A$38",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BC_Value_Map\\Household\\Matrix_MatrixBBValue",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$26:$M$38",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BD_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$42:$E$42",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BD_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$43:$A$186",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BD_Value_Map\\Household\\Matrix_VehicleCount",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$42:$E$186",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BE_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$190:$F$190",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BE_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$191:$A$193",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BE_Value_Map\\Household\\Matrix_NumberOfVehicleAdditionEndorsements",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$190:$F$193",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BF_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$197:$E$197",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BF_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$198:$A$201",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BF_Value_Map\\Household\\Matrix_NumberOfNonPayReinstates",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$197:$E$201",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BG_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$205:$Q$205",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BG_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$206:$A$220",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BG_Value_Map\\Household\\Matrix_MatrixBFValue",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$205:$Q$220",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BH_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$224:$J$224",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BH_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$225:$A$226",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BH_Value_Map\\Household\\Matrix_CompanyTenurePriorToCurrentPolicy",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$224:$J$226",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BI_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$230:$H$230",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BI_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$231:$A$232",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BI_Value_Map\\Household\\Matrix_PriorBILimitClassification",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$230:$H$232",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BJ_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$236:$O$236",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BJ_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$237:$A$254",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BJ_Value_Map\\Household\\Matrix_MatrixBIValue",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$236:$O$254",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BK_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$258:$D$258",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BK_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$259:$A$260",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BK_Value_Map\\Household\\Matrix_ExcessResidentClassification",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$258:$D$260",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BL_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$264:$F$264",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BL_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$265:$A$268",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BL_Value_Map\\Household\\Matrix_OmittedIncidentCount",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$264:$F$268",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BM_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$272:$U$272",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BM_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$273:$A$278",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BM_Value_Map\\Household\\Matrix_MatrixBLValue",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$272:$U$278",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BN_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$B$282:$H$282",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BN_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$283:$A$312",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_BN_Value_Map\\Household\\Matrix_PriorBILimitClassification",
+        "scope": "Workbook",
+        "reference": "'Step 2'!$A$282:$H$312",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1a_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1a'!$B$5:$OK$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1a_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1a'!$A$6:$A$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1b_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1b'!$B$5:$OK$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1b_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1b'!$A$6:$A$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1c_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1c'!$B$5:$LI$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1c_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1c'!$A$6:$A$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1d_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1d'!$B$5:$SG$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1d_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1d'!$A$6:$A$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1e_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 1e'!$B$5:$EO$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step1e_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 1e'!$A$6:$A$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2a_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2a'!$B$5:$IG$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2a_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2a'!$A$6:$A$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2b_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2b'!$B$5:$IS$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2b_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2b'!$A$6:$A$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2c_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2c'!$B$5:$DQ$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2c_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2c'!$A$6:$A$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2d_Columns",
+        "scope": "Workbook",
+        "reference": "'Step 2d'!$B$5:$HC$5",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Matrix_Step2d_Rows",
+        "scope": "Workbook",
+        "reference": "'Step 2d'!$A$6:$A$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Medical",
+        "scope": "Workbook",
+        "reference": "Logic!$FB$19:$FB$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_ACPE_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$GE$18:$GH$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Age_License_Obtained",
+        "scope": "Workbook",
+        "reference": "Logic!$AQ$18:$AT$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Annual_Mileage",
+        "scope": "Workbook",
+        "reference": "Logic!$AF$18:$AI$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Average_Length_Of_Prior_Insurance_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$BK$18:$BN$27",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_BI_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$EH$18:$EK$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_COLL_Deductible",
+        "scope": "Workbook",
+        "reference": "Logic!$FN$18:$FQ$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_COMP_Deductible",
+        "scope": "Workbook",
+        "reference": "Logic!$FR$42:$FU$54",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Driver_License_Status",
+        "scope": "Workbook",
+        "reference": "Logic!$W$18:$Y$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Driver_Type",
+        "scope": "Workbook",
+        "reference": "Logic!$S$18:$U$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Education_Level",
+        "scope": "Workbook",
+        "reference": "Logic!$RG$18:$RJ$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Gender",
+        "scope": "Workbook",
+        "reference": "Logic!$E$18:$G$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Glass_Coverage",
+        "scope": "Workbook",
+        "reference": "Logic!$FR$55:$FU$64",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Incident_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$CS$18:$CS$88, Logic!$CM$18:$CR$88",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Incident_Type",
+        "scope": "Workbook",
+        "reference": "Logic!$DA$18:$DC$20",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Lienholder",
+        "scope": "Workbook",
+        "reference": "Logic!$GR$18:$HC$450",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_LOAN",
+        "scope": "Workbook",
+        "reference": "Logic!$GA$18:$GD$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Marital_Status",
+        "scope": "Workbook",
+        "reference": "Logic!$I$18:$L$24",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_MED_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$FB$18:$FE$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_NAIC_code",
+        "scope": "Workbook",
+        "reference": "Logic!$HT$18:$HW$61",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Novo_Loss_Type_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$HM$18:$HM$91,Logic!$HP$18:$HR$91",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Occupation_Category",
+        "scope": "Workbook",
+        "reference": "Logic!$BT$18:$BT$41,Logic!$BR$18:$BR$41,Logic!$BQ$18:$BQ$41",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Occupation_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$CA$18:$CD$177",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_PD_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$EL$18:$EO$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_PIP_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$EX$18:$FA$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_RENT_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$FW$18:$FZ$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Rewrite_Reason_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$N$18:$P$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_TOW_Option",
+        "scope": "Workbook",
+        "reference": "Logic!$GI$18:$GL$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_UIM_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$ET$18:$EW$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_UM_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$EP$18:$ES$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_UMBI_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$FF$18:$FI$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_UMPD_Limit",
+        "scope": "Workbook",
+        "reference": "Logic!$FJ$18:$FM$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Vehicle_Length_of_Ownership_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$AJ$18:$AM$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Vehicle_Use_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$BA$18:$BC$22",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Verisk_Violation_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$DK$18:$DL$410",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Violation_Class",
+        "scope": "Workbook",
+        "reference": "Logic!$CW$18:$CZ$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Violation_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$CL$18:$CR$88",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Metadata_Years_License_Held",
+        "scope": "Workbook",
+        "reference": "Logic!$AV$18:$AY$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Minimum_Premium_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "'Minimum Premium Table'!$B$10:$B$11,'Minimum Premium Table'!$C$10:$C$11",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Monthly_Rate_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Monthly Rate Factor'!$B$10:$B$60,'Monthly Rate Factor'!$C$10:$L$60",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Multi_Policy_Discount_Classification",
+        "scope": "Workbook",
+        "reference": "Logic!$EC$19:$EC$21",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Named_Ranges_In_This_File",
+        "scope": "Workbook",
+        "reference": "Logic!$NQ$18:$NX$18",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "NB_Five_Yr_Acc_Free_Claim_Free_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'NB Five Yr Acc Free Claim Free'!$B$10:$F$490,'NB Five Yr Acc Free Claim Free'!$G$10:$P$490",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "NB_NSP_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'NB NSP Participation Disc'!$B$10:$B$12,'NB NSP Participation Disc'!$C$10:$N$12",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "New_Business_Five_Year_Accident_Free_Discount",
+        "scope": "Workbook",
+        "reference": "Logic!$CH$3:$CS$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "New_Business_Rate_Revision_Effective_Date_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "Logic!$F$3:$F$4,Logic!$G$3:$G$4",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "NewBusinessEffectiveDate",
+        "scope": "Workbook",
+        "reference": "ROC!$B$3",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Non_drinker_logic",
+        "scope": "Workbook",
+        "reference": "Logic!$AE$3:$AL$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "NovoNav_Discount",
+        "scope": "Workbook",
+        "reference": "Logic!$QB$3",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "NSP_Not_Currently_Monitoring_Duration_Mapping_Vehicle",
+        "scope": "Workbook",
+        "reference": "'Not Monitoring Duration'!$B$9:$B$63,'Not Monitoring Duration'!$C$9:$C$63",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "NSP_Participation_Discount",
+        "scope": "Workbook",
+        "reference": "Logic!$GU$3",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Number_of_Drivers",
+        "scope": "Workbook",
+        "reference": "Inputs!$E$6",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Number_of_Vehicles",
+        "scope": "Workbook",
+        "reference": "Inputs!$E$3",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Occupation",
+        "scope": "Workbook",
+        "reference": "Logic!$RD$18:$RD$700",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Occupation_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$RE$18:$RE$700",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Occupation_Education_Rank_Mapping_Driver",
+        "scope": "Workbook",
+        "reference": "'OccupationEd Rank Table'!$B$10:$D$178,'OccupationEd Rank Table'!$E$10:$E$178",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Occupation_Education_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'OccupationEd Factor Table'!$B$10:$C$178,'OccupationEd Factor Table'!$D$10:$K$178",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Occupation_Group_and_Rank",
+        "scope": "Workbook",
+        "reference": "Logic!$NR$3:$OB$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Occupation_Group_Mapping_Driver",
+        "scope": "Workbook",
+        "reference": "'Occupation Group Table'!$C$10:$C$162,'Occupation Group Table'!$D$10:$D$162",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "OpEx1_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'OpEx_Factor 1'!$B$10:$C$100,'OpEx_Factor 1'!$D$10:$D$100",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "OpEx2_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'OpEx_Factor 2'!$B$10:$C$26,'OpEx_Factor 2'!$D$10:$D$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "OpEx3_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'OpEx_Factor 3'!$B$10:$B$25,'OpEx_Factor 3'!$C$10:$C$25",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "OpEx5_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'OpEx_Factor 5'!$B$10:$C$30,'OpEx_Factor 5'!$D$10:$D$30",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "OpEx6_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'OpEx_Factor 6'!$B$10:$C$20,'OpEx_Factor 6'!$D$10:$D$20",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "OpEx8_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'OpEx_Factor 8'!$B$10:$B$40,'OpEx_Factor 8'!$C$10:$C$40",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "paid_in_full_mapping_household",
+        "scope": "Workbook",
+        "reference": "Logic!$SC$6:$SD$10,Logic!$SG$6:$SG$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "policy_inception_date",
+        "scope": "Workbook",
+        "reference": "Inputs!$H$29",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "policy_term_effective_date",
+        "scope": "Workbook",
+        "reference": "Inputs!$H$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Policy_Term_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Policy Term'!$B$10:$B$11,'Policy Term'!$C$10:$N$11",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "preferred_status_logic",
+        "scope": "Workbook",
+        "reference": "Logic!$BD$3:$BU$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Prior_BI_Level_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "'Prior BI Level Table'!$B$10:$C$31,'Prior BI Level Table'!$D$10:$D$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Prior_Insurance_Activity_Tier_Determination_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$U$3:$AC$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Prior_Insurance_Activity_Tier_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "PriorInsActivityTierDet!$B$9:$C$27,PriorInsActivityTierDet!$D$9:$D$27",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Prior_Insurance_Classification_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "Logic!$SO$6:$SO$9,Logic!$SP$6:$SP$9",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Prior_Insurance_Indicator_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "Logic!$SO$6:$SO$9,Logic!$SQ$6:$SQ$9",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Prior_Insurance_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$U$12:$AC$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "PriorBILimit",
+        "scope": "Workbook",
+        "reference": "Logic!$AD$19:$AD$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "PriorBILimitClassification",
+        "scope": "Workbook",
+        "reference": "Logic!$AE$19:$AE$28",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Program",
+        "scope": "Workbook",
+        "reference": "ROC!$B$2",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Ratable_Spouse",
+        "scope": "Workbook",
+        "reference": "Logic!$GJ$4",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Rated_Driver_Gender_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$NJ$3:$NP$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Recent_Period",
+        "scope": "Workbook",
+        "reference": "Logic!$I$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "RenewalEffectiveDate",
+        "scope": "Workbook",
+        "reference": "ROC!$B$4",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Rewrite_Reason",
+        "scope": "Workbook",
+        "reference": "Logic!$N$19:$N$22",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Risk_Attribute_Default_Values",
+        "scope": "Workbook",
+        "reference": "Logic!$ST$5:$ST$15,Logic!$SU$5:$SU$15",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Risk_Group_Code_Lookup",
+        "scope": "Workbook",
+        "reference": "Logic!$PS$3:$PZ$9",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Risk_Group_Code_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "'Risk Group Code'!$B$10:$D$52,'Risk Group Code'!$E$10:$E$52",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Risk_Group_Code_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Risk Group Code Factor'!$B$10:$B$16,'Risk Group Code Factor'!$C$10:$L$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Second_BI_PD_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$D$12:$D$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Second_COLL_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$J$12:$J$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Second_COMP_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$G$12:$G$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Second_MED_Violation",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$M$12:$M$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Seguro_Categorization_Age_License_Obtained",
+        "scope": "Workbook",
+        "reference": "Logic!$AQ$18:$AQ$26,Logic!$AS$18:$AS$26",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Seguro_Categorization_Incident_Type",
+        "scope": "Workbook",
+        "reference": "Logic!$CU$18:$CU$88,Logic!$CS$18:$CS$88",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Seguro_Categorization_Lienholder",
+        "scope": "Workbook",
+        "reference": "Logic!$GR$18:$GR$450",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Seguro_Categorization_Occupation_Category",
+        "scope": "Workbook",
+        "reference": "Logic!$BW$18:$BW$171,Logic!$CA$18:$CA$171",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Seguro_Categorization_Violation_Class",
+        "scope": "Workbook",
+        "reference": "Logic!$CT$18:$CT$88,Logic!$CL$18:$CL$88",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Senior_Mature_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$AN$13:$BB$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "SheetNames",
+        "scope": "Workbook",
+        "reference": "REPLACE(GET.WORKBOOK(1),1,FIND(\"]\",GET.WORKBOOK(1)),\"\")",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "SR22_filings",
+        "scope": "Workbook",
+        "reference": "Logic!$BM$5:$BM$14",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step1_A_Value_Map\\Household\\Matrix_MatrixAGValue",
+        "scope": "Workbook",
+        "reference": "'Step 1a'!$A$5:$OK$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step1_B_Value_Map\\Household\\Matrix_MatrixAJValue",
+        "scope": "Workbook",
+        "reference": "'Step 1b'!$A$5:$OK$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step1_C_Value_Map\\Household\\Matrix_MatrixAMValue",
+        "scope": "Workbook",
+        "reference": "'Step 1c'!$A$5:$LI$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step1_D_Value_Map\\Household\\Matrix_MatrixAPValue",
+        "scope": "Workbook",
+        "reference": "'Step 1d'!$A$5:$SG$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step1_E_Value_Map\\Household\\Matrix_MatrixASValue",
+        "scope": "Workbook",
+        "reference": "'Step 1e'!$A$5:$EO$329",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step2_A_Value_Map\\Household\\Matrix_MatrixBGValue",
+        "scope": "Workbook",
+        "reference": "'Step 2a'!$A$5:$IG$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step2_B_Value_Map\\Household\\Matrix_MatrixBJValue",
+        "scope": "Workbook",
+        "reference": "'Step 2b'!$A$5:$IS$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step2_C_Value_Map\\Household\\Matrix_MatrixBMValue",
+        "scope": "Workbook",
+        "reference": "'Step 2c'!$A$5:$DQ$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Step2_D_Value_Map\\Household\\Matrix_MatrixBNValue",
+        "scope": "Workbook",
+        "reference": "'Step 2d'!$A$5:$HC$581",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Subtraction_Of_Unity_Risk_Point",
+        "scope": "Workbook",
+        "reference": "Logic!$RP$6:$RP$7,Logic!$RQ$6:$RZ$7",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Three_Year_Safe_Dr_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Three Year Safe Dr Disc Table'!$B$10:$D$30,'Three Year Safe Dr Disc Table'!$E$10:$N$30",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Three_Year_Safe_Driving_Discount",
+        "scope": "Workbook",
+        "reference": "Logic!$BW$3:$CF$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "TOC",
+        "scope": "Workbook",
+        "reference": "'Table of contents'!$B$1",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "total_premium",
+        "scope": "Workbook",
+        "reference": "premium_summary!$C$2",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "UBI_Premium_Weighted_Tier_Factor_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$GU$3:$HC$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Underwriting_Tier_Mapping_Household",
+        "scope": "Workbook",
+        "reference": "Final_Value!$A$6:$A$231,Final_Value!$B$6:$B$231",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "UW_Tier_Percent_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Tier Factor Table'!$B$10:$B$235,'Tier Factor Table'!$C$10:$K$235",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Valid_Garaging_ZIP_Code_Mapping_Vehicle",
+        "scope": "Workbook",
+        "reference": "'Garaging Location Factor'!$B$10:$B$1572,'Garaging Location Factor'!$M$10:$M$1572",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Veh_Symbol_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Vehicle Symbol Factor Table'!$B$10:$E$24259,'Vehicle Symbol Factor Table'!$F$10:$M$24259",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_1",
+        "scope": "Workbook",
+        "reference": "Inputs!$CN$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_2",
+        "scope": "Workbook",
+        "reference": "Inputs!$CX$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_3",
+        "scope": "Workbook",
+        "reference": "Inputs!$DH$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_4",
+        "scope": "Workbook",
+        "reference": "Inputs!$DR$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_5",
+        "scope": "Workbook",
+        "reference": "Inputs!$EB$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_6",
+        "scope": "Workbook",
+        "reference": "Inputs!$EL$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_7",
+        "scope": "Workbook",
+        "reference": "Inputs!$EV$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_8",
+        "scope": "Workbook",
+        "reference": "Inputs!$FF$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_9",
+        "scope": "Workbook",
+        "reference": "Inputs!$FP$10",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Age_Coverage_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Vehicle Age and Cov'!$B$10:$E$170,'Vehicle Age and Cov'!$F$10:$N$170",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Age_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$HE$3:$HK$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Age_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Vehicle Age Factor'!$B$10:$C$120,'Vehicle Age Factor'!$D$10:$L$120",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Attributes_Rating_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Vehicle Attributes'!$B$10:$E$154,'Vehicle Attributes'!$F$10:$M$154",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Calculation_Order",
+        "scope": "Workbook",
+        "reference": "Logic!$RR$20:$RR$125",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Clean_Status_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$PS$11:$PZ$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_History_Rating_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Vehicle History Factor'!$B$10:$F$20,'Vehicle History Factor'!$G$10:$O$20",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Horsepower_Code_Indicator_Mapping_Vehicle",
+        "scope": "Workbook",
+        "reference": "'Vehicle Symbol Factor Table'!$B$10:$E$24259,'Vehicle Symbol Factor Table'!$P$10:$P$24259",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Risk_Group_Code_Mapping_Vehicle",
+        "scope": "Workbook",
+        "reference": "'Veh Risk Grp Code Table'!$B$10:$E$90,'Veh Risk Grp Code Table'!$F$10:$F$90",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Type_Code_Indicator_Mapping_Vehicle",
+        "scope": "Workbook",
+        "reference": "'Vehicle Symbol Factor Table'!$B$10:$E$24259,'Vehicle Symbol Factor Table'!$O$10:$O$24259",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Use",
+        "scope": "Workbook",
+        "reference": "Logic!$BA$19:$BA$22",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Vehicle_Use_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$BB$19:$BB$22",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "VehicleHistoryOrderStatus",
+        "scope": "Workbook",
+        "reference": "Logic!$AA$19:$AA$23",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Verisk_Categorization_Loss_Type_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$HI$18:$HI$91,Logic!$HM$18:$HM$91",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Verisk_Categorization_Violation_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$DK$18:$DK$410,Logic!$DM$18:$DM$410",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Violation_Class",
+        "scope": "Workbook",
+        "reference": "Logic!$CT$17:$CT$200",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Violation_Class_Mapping_Driver",
+        "scope": "Workbook",
+        "reference": "'Violation Class Table'!$B$10:$B$53,'Violation Class Table'!$C$10:$C$53",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Violation_Code",
+        "scope": "Workbook",
+        "reference": "Logic!$CL$17:$CL$200",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "violation_codes",
+        "scope": "Workbook",
+        "reference": "'Violation Points Table'!$B$12:$B$56",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Violation_Count_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$PC$3:$PQ$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Violation_Description",
+        "scope": "Workbook",
+        "reference": "Logic!$CN$17:$CN$200",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Years_Licensed_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Years Licensed'!$B$11:$C$35,'Years Licensed'!$D$11:$M$35",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Yes_No",
+        "scope": "Workbook",
+        "reference": "Logic!$E$30:$E$31",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Yes_No_Declined",
+        "scope": "Workbook",
+        "reference": "Logic!$F$30:$F$32",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Youthful_Driver_Disc_Risk_Factor",
+        "scope": "Workbook",
+        "reference": "'Youthful Driver Factor'!$B$10:$G$186,'Youthful Driver Factor'!$H$10:$P$186",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      },
+      {
+        "name": "Youthful_Driver_Logic",
+        "scope": "Workbook",
+        "reference": "Logic!$EG$3:$EP$16",
+        "comments": "",
+        "hidden": null,
+        "local_sheet_id": null
+      }
+    ]
+  }

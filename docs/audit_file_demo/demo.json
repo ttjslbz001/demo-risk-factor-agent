@@ -1,0 +1,14 @@
+{
+    "workbook_id": "AZ_2025-07-15_v250",
+    "named_ranges_count": 431,
+    "named_ranges": [
+        {
+            "name": "DiscountLevel\\Diamond_Cont_Ins_Disc_Risk_Factor",
+            "scope": "Workbook",
+            "reference": "'Cont Ins Disc(Diamond)'!$B$10:$E$73,'Cont Ins Disc(Diamond)'!$F$10:$N$73",
+            "comments": "",
+            "hidden": null,
+            "local_sheet_id": null
+          }
+    ]
+  }
