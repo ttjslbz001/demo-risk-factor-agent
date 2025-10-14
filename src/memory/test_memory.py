@@ -102,8 +102,9 @@ class MemoryLayer:
         
         # Format as conversational message so mem0 can extract memories
         # mem0 expects messages in conversation format for memory extraction
+        
         messages = [
-            {"role": "user", "content": text}
+            {"role": "user", "content": text} ## todo: insert role
         ]
             
         result = self.memory.add(messages, **kwargs)

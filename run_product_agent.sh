@@ -55,7 +55,7 @@ echo ""
 
 # Run the Streamlit app
 streamlit run src/streamlit_product_agent.py \
-    --server.port 8502 \
+    --server.port 8503 \
     --server.headless true \
     --browser.serverAddress localhost
 

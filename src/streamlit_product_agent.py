@@ -180,7 +180,8 @@ def main():
                     answer = agent.answer_question(question)
                     
                     st.markdown("### 💡 Answer")
-                    st.markdown(f'<div class="answer-box">{answer}</div>', unsafe_allow_html=True)
+                    # Render the answer as markdown for better formatting
+                    st.markdown(answer)
                     
                     # Show timestamp
                     st.caption(f"Answered at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")

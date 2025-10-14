@@ -1,5 +1,5 @@
 """
-Product Definition Agent - Memory-Based Multi-Agent System
+Product Definition Agent - Fully Memory-Driven (mem0) Agent
 
 This agent is responsible for:
 1. Defining required risk factors for products
@@ -8,11 +8,17 @@ This agent is responsible for:
 4. Maintaining product-specific rule configurations
 5. Defining how risk factors should be evaluated
 
-Memory Features:
-- Persistent knowledge about risk factors and products
+🔥 FULLY MEMORY-DRIVEN ARCHITECTURE:
+- NO hardcoded product definitions - everything loaded from mem0
+- NO local state management - all data retrieved dynamically
+- Persistent knowledge storage in mem0 vector database
 - Learning from interactions and usage patterns
 - Context-aware responses using semantic search
 - Growing knowledge base over time
+- Stateless agent design for scalability
+
+To initialize the memory with products, use:
+    python bootstrap_product_memory.py --sample-data
 """
 
 import logging
@@ -50,13 +56,15 @@ class ProductDefinition:
 
 class ProductDefinitionAgent:
     """
-    Memory-based agent responsible for defining products, risk factors, and assessment rules.
+    Fully memory-driven agent responsible for defining products, risk factors, and assessment rules.
     
-    This agent uses persistent memory to:
-    - Store and retrieve risk factor knowledge
-    - Learn from interactions
-    - Provide context-aware responses
-    - Grow its knowledge base over time
+    🔥 STATELESS ARCHITECTURE - All data loaded from mem0:
+    - Store and retrieve product definitions from mem0 vector database
+    - NO local caching - queries mem0 for every request
+    - Learn from interactions and store insights in mem0
+    - Provide context-aware responses using semantic search
+    - Dynamically growing knowledge base
+    - Horizontally scalable stateless design
     """
     
     def __init__(
@@ -64,7 +72,7 @@ class ProductDefinitionAgent:
         rules_dir: str = "docs/insurance_risk_factor_agent/3_year_claim_free_discount",
         use_memory: bool = True,
         agent_id: str = "product_definition_agent",
-        user_id: str = "system"
+        user_id: str = "user_123"
     ):
         """
         Initialize the memory-based product definition agent.
@@ -84,7 +92,6 @@ class ProductDefinitionAgent:
             self.agent = None
         
         self.rules_dir = rules_dir
-        self.product_definitions: Dict[str, ProductDefinition] = {}
         self.agent_id = agent_id
         self.user_id = user_id
         self.use_memory = use_memory
@@ -105,122 +112,252 @@ class ProductDefinitionAgent:
         else:
             self.memory = None
         
-        self._load_product_definitions()
-        
-    def _load_product_definitions(self) -> None:
-        """Load product definitions and rules."""
-        try:
-            # Load rules from the rules directory
-            rules = load_rules(self.rules_dir)
+        logger.info("ProductDefinitionAgent initialized - all data loaded dynamically from mem0")
             
-            # Define the Monthly-Comfort product (demo product)
-            comfort_product = ProductDefinition(
-                product_code="Monthly-Comfort",
-                product_name="Monthly Comfort Package",
-                risk_factors=[
-                    RiskFactorDefinition(
-                        risk_subject="driver",
-                        risk_factor_name="three_year_claim_free_discount",
-                        description="Three-year claim-free driving discount assessment",
-                        evaluation_rules=[rule["id"] for rule in rules],
-                        required=True,
-                        weight=1.0
-                    ),
-                    RiskFactorDefinition(
-                        risk_subject="driver",
-                        risk_factor_name="driving_record_classification",
-                        description="Driver record classification based on violations and claims",
-                        evaluation_rules=["D04_Driving_Record_Classification"],
-                        required=True,
-                        weight=1.2
-                    ),
-                    RiskFactorDefinition(
-                        risk_subject="driver",
-                        risk_factor_name="driver_classification",
-                        description="Basic driver classification by age and experience",
-                        evaluation_rules=["D03_Driver_Classification"],
-                        required=True,
-                        weight=0.8
-                    )
+    def _parse_product_from_memory(self, memory_result: Dict[str, Any]) -> Optional[ProductDefinition]:
+        """
+        Parse a product definition from a memory search result.
+        
+        Args:
+            memory_result: Memory search result containing product information
+            
+        Returns:
+            ProductDefinition if successfully parsed, None otherwise
+        """
+        try:
+            import json
+            
+            # Extract text from memory result
+            if isinstance(memory_result, dict):
+                text = memory_result.get('memory', memory_result.get('text', ''))
+                metadata = memory_result.get('metadata', {})
+            else:
+                text = str(memory_result)
+                metadata = {}
+            
+            # Try to parse as JSON first
+            try:
+                # Look for JSON structure in text
+                if '{' in text and '}' in text:
+                    # Extract JSON portion
+                    start_idx = text.find('{')
+                    end_idx = text.rfind('}') + 1
+                    json_str = text[start_idx:end_idx]
+                    data = json.loads(json_str)
+                    
+                    # Build product definition from parsed data
+                    if 'product_code' in data or 'productCode' in data:
+                        return self._build_product_from_dict(data)
+            except json.JSONDecodeError:
+                pass
+            
+            # Try to parse structured text format
+            return self._parse_structured_text(text, metadata)
+            
+        except Exception as e:
+            logger.debug(f"Could not parse product from memory: {e}")
+            return None
+    
+    def _build_product_from_dict(self, data: Dict[str, Any]) -> Optional[ProductDefinition]:
+        """Build ProductDefinition from dictionary data."""
+        try:
+            product_code = data.get('product_code') or data.get('productCode')
+            product_name = data.get('product_name') or data.get('productName') or product_code
+            
+            # Parse risk factors
+            risk_factors = []
+            risk_factors_data = data.get('risk_factors') or data.get('riskFactors') or []
+            for rf_data in risk_factors_data:
+                risk_factor = RiskFactorDefinition(
+                    risk_subject=rf_data.get('risk_subject') or rf_data.get('riskSubject', 'unknown'),
+                    risk_factor_name=rf_data.get('risk_factor_name') or rf_data.get('riskFactorName', ''),
+                    description=rf_data.get('description', ''),
+                    evaluation_rules=rf_data.get('evaluation_rules') or rf_data.get('evaluationRules', []),
+                    required=rf_data.get('required', True),
+                    weight=rf_data.get('weight', 1.0)
+                )
+                risk_factors.append(risk_factor)
+            
+            # Parse assessment rules and coverage options
+            assessment_rules = data.get('assessment_rules') or data.get('assessmentRules') or {}
+            coverage_options = data.get('coverage_options') or data.get('coverageOptions') or {}
+            
+            return ProductDefinition(
+                product_code=product_code,
+                product_name=product_name,
+                risk_factors=risk_factors,
+                assessment_rules=assessment_rules,
+                coverage_options=coverage_options
+            )
+        except Exception as e:
+            logger.debug(f"Could not build product from dict: {e}")
+            return None
+    
+    def _parse_structured_text(self, text: str, metadata: Dict[str, Any]) -> Optional[ProductDefinition]:
+        """Parse product definition from structured text format."""
+        # This is a fallback parser for text-based product definitions
+        # Returns None if the text doesn't look like a product definition
+        
+        text_lower = text.lower()
+        if 'product' not in text_lower:
+            return None
+        
+        # Extract basic info using simple heuristics
+        # This is intentionally simple - real data should be in JSON format
+        product_code = metadata.get('product_code')
+        if not product_code:
+            # Try to extract from text
+            for line in text.split('\n'):
+                if 'product_code' in line.lower() or 'product code' in line.lower():
+                    parts = line.split(':')
+                    if len(parts) > 1:
+                        product_code = parts[1].strip().strip('"').strip("'")
+                        break
+        
+        if not product_code:
+            return None
+        
+        # Build minimal product definition
+        return ProductDefinition(
+            product_code=product_code,
+            product_name=metadata.get('product_name', product_code),
+            risk_factors=[],
+            assessment_rules={},
+            coverage_options={}
+        )
+        
+    def store_product_to_memory(self, product: ProductDefinition) -> bool:
+        """
+        Store a product definition to memory.
+        
+        Args:
+            product: ProductDefinition to store
+            
+        Returns:
+            Success status
+        """
+        if not self.use_memory or not self.memory:
+            logger.warning("Memory not enabled, cannot store product")
+            return False
+        
+        try:
+            import json
+            
+            # Convert product to dictionary
+            product_dict = {
+                "product_code": product.product_code,
+                "product_name": product.product_name,
+                "risk_factors": [
+                    {
+                        "risk_subject": rf.risk_subject,
+                        "risk_factor_name": rf.risk_factor_name,
+                        "description": rf.description,
+                        "evaluation_rules": rf.evaluation_rules,
+                        "required": rf.required,
+                        "weight": rf.weight
+                    }
+                    for rf in product.risk_factors
                 ],
-                assessment_rules={rule["id"]: rule for rule in rules},
-                coverage_options={
-                    "liability_coverage": {"min": 25000, "max": 100000, "default": 50000},
-                    "comprehensive": {"available": True, "deductible_options": [250, 500, 1000]},
-                    "collision": {"available": True, "deductible_options": [250, 500, 1000]}
+                "assessment_rules": product.assessment_rules,
+                "coverage_options": product.coverage_options
+            }
+            
+            # Store as JSON in memory
+            text = f"Product Definition: {product.product_name}\n{json.dumps(product_dict, indent=2)}"
+            
+            self.memory.add_memory(
+                text=text,
+                user_id=self.user_id,
+                agent_id=self.agent_id,
+                run_id=f"product_def_{datetime.now().strftime('%Y%m%d')}",
+                metadata={
+                    "category": "product_definition",
+                    "product_code": product.product_code,
+                    "product_name": product.product_name,
+                    "type": "definition",
+                    "timestamp": datetime.now().isoformat()
                 }
             )
             
-            self.product_definitions["Monthly-Comfort"] = comfort_product
-            
-            # Add other product definitions (placeholders for future expansion)
-            self._add_economy_product()
-            self._add_turbo_product()
-            
-            logger.info(f"Loaded {len(self.product_definitions)} product definitions")
+            logger.info(f"Stored product definition to mem0: {product.product_code}")
+            return True
             
         except Exception as e:
-            logger.error(f"Failed to load product definitions: {e}")
-            raise RuntimeError(f"ProductDefinitionLoadError: {e}") from e
+            logger.error(f"Error storing product to memory: {e}")
+            return False
+    
+    def load_product_from_rules_dir(self, product_code: str, rules_dir: str) -> Optional[ProductDefinition]:
+        """
+        Load a product definition from rules directory and store to memory.
+        
+        Args:
+            product_code: Product code to create
+            rules_dir: Directory containing rule files
             
-    def _add_economy_product(self) -> None:
-        """Add Monthly-Economy product definition (placeholder)."""
-        economy_product = ProductDefinition(
-            product_code="Monthly-Economy",
-            product_name="Monthly Economy Package",
-            risk_factors=[
-                RiskFactorDefinition(
-                    risk_subject="driver",
-                    risk_factor_name="basic_driver_assessment",
-                    description="Basic driver assessment for economy package",
-                    evaluation_rules=["basic_rules"],
-                    required=True,
-                    weight=1.0
-                )
-            ],
-            assessment_rules={},
-            coverage_options={
-                "liability_coverage": {"min": 15000, "max": 50000, "default": 25000}
-            }
-        )
-        self.product_definitions["Monthly-Economy"] = economy_product
-        
-    def _add_turbo_product(self) -> None:
-        """Add Monthly-Turbo product definition (placeholder)."""
-        turbo_product = ProductDefinition(
-            product_code="Monthly-Turbo",
-            product_name="Monthly Turbo Package",
-            risk_factors=[
-                RiskFactorDefinition(
-                    risk_subject="driver",
-                    risk_factor_name="comprehensive_risk_assessment",
-                    description="Comprehensive risk assessment for turbo package",
-                    evaluation_rules=["comprehensive_rules"],
-                    required=True,
-                    weight=1.5
-                )
-            ],
-            assessment_rules={},
-            coverage_options={
-                "liability_coverage": {"min": 50000, "max": 250000, "default": 100000},
-                "comprehensive": {"available": True, "deductible_options": [100, 250, 500]},
-                "collision": {"available": True, "deductible_options": [100, 250, 500]},
-                "rental_car": {"available": True, "daily_limit": 50}
-            }
-        )
-        self.product_definitions["Monthly-Turbo"] = turbo_product
-        
+        Returns:
+            ProductDefinition if successfully loaded and stored
+        """
+        try:
+            rules = load_rules(rules_dir)
+            
+            # Create product definition from rules
+            # This is a bootstrap method to migrate from file-based to memory-based
+            product = ProductDefinition(
+                product_code=product_code,
+                product_name=f"{product_code} Package",
+                risk_factors=[],
+                assessment_rules={rule["id"]: rule for rule in rules},
+                coverage_options={}
+            )
+            
+            # Store to memory
+            if self.store_product_to_memory(product):
+                logger.info(f"Loaded and stored product from rules: {product_code}")
+                return product
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error loading product from rules directory: {e}")
+            return None
+    
     def get_product_definition(self, product_code: str) -> Optional[ProductDefinition]:
         """
-        Get the complete product definition for a given product code.
+        Get the complete product definition for a given product code from mem0.
         
         Args:
             product_code: The product code (e.g., "Monthly-Comfort")
             
         Returns:
-            ProductDefinition if found, None otherwise
+            ProductDefinition if found in mem0, None otherwise
         """
-        return self.product_definitions.get(product_code)
+        if not self.use_memory or not self.memory:
+            logger.warning("Memory not enabled, cannot retrieve product definition")
+            return None
+        
+        try:
+            # Query mem0 for product definition
+            query = f"product definition for {product_code}"
+            results = self.memory.search_memories(
+                query=query,
+                user_id=self.user_id,
+                agent_id=self.agent_id,
+                limit=5
+            )
+            
+            # Parse and return first matching product
+            for result in results:
+                product = self._parse_product_from_memory(result)
+                if product and product.product_code == product_code:
+                    logger.info(f"Retrieved product from mem0: {product_code}")
+                    return product
+            
+            logger.warning(f"Product not found in mem0: {product_code}")
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error loading product from mem0: {e}")
+            return None
         
     def get_risk_factor_definitions(self, product_code: str) -> List[Tuple[str, str]]:
         """
@@ -290,12 +427,38 @@ class ProductDefinitionAgent:
         
     def list_available_products(self) -> List[str]:
         """
-        Get list of available product codes.
+        Get list of available product codes from mem0.
         
         Returns:
             List of available product codes
         """
-        return list(self.product_definitions.keys())
+        if not self.use_memory or not self.memory:
+            logger.warning("Memory not enabled, cannot list products")
+            return []
+        
+        try:
+            # Query mem0 for all product definitions
+            query = "list all insurance product definitions"
+            results = self.memory.search_memories(
+                query=query,
+                user_id=self.user_id,
+                agent_id=self.agent_id,
+                limit=50
+            )
+            
+            # Extract unique product codes
+            product_codes = set()
+            for result in results:
+                product = self._parse_product_from_memory(result)
+                if product:
+                    product_codes.add(product.product_code)
+            
+            logger.info(f"Found {len(product_codes)} products in mem0")
+            return sorted(list(product_codes))
+            
+        except Exception as e:
+            logger.error(f"Error listing products from mem0: {e}")
+            return []
         
     def validate_product_configuration(self, product_code: str) -> Dict[str, Any]:
         """
@@ -518,13 +681,13 @@ class ProductDefinitionAgent:
     
     def answer_question(self, question: str) -> str:
         """
-        Answer questions using both hardcoded definitions and memory knowledge.
+        Answer questions using memory-based knowledge.
         
         Args:
             question: Natural language question about products or risk factors
             
         Returns:
-            Answer combining definitions and memory
+            Answer from memory and loaded product definitions
         """
         logger.info(f"Answering question: '{question}'")
         
@@ -532,39 +695,115 @@ class ProductDefinitionAgent:
         memory_results = []
         if self.use_memory and self.memory:
             try:
-                memory_results = self.query_knowledge(question, limit=3)
+                memory_results = self.query_knowledge(question, limit=5)
             except Exception as e:
                 logger.error(f"Error querying memory: {e}")
         
         # Build answer
         answer_parts = []
         
-        # Add memory-based knowledge
+        # Add memory-based knowledge with better formatting
         if memory_results:
-            answer_parts.append("Based on my knowledge:")
-            for idx, result in enumerate(memory_results[:3], 1):
+            answer_parts.append("## 📚 Knowledge from Memory\n")
+            for idx, result in enumerate(memory_results, 1):
                 text = result['text']
-                # Clean up the text
-                if len(text) > 200:
-                    text = text[:200] + "..."
-                answer_parts.append(f"{idx}. {text}")
+                score = result.get('score', 0)
+                metadata = result.get('metadata', {})
+                
+                # Format each result nicely
+                answer_parts.append(f"### {idx}. Relevance Score: {score:.3f}")
+                answer_parts.append(f"{text}\n")
+                
+                # Add metadata if useful
+                if metadata:
+                    category = metadata.get('category', '')
+                    if category:
+                        answer_parts.append(f"*Category: {category}*\n")
         
-        # Add hardcoded product definitions if relevant
+        # Query mem0 for product-specific information if relevant
         question_lower = question.lower()
-        if any(prod.lower() in question_lower for prod in self.product_definitions.keys()):
-            for prod_code in self.product_definitions.keys():
-                if prod_code.lower() in question_lower:
-                    prod = self.product_definitions[prod_code]
-                    answer_parts.append(f"\nProduct: {prod.product_name} ({prod.product_code})")
-                    answer_parts.append(f"Risk Factors: {len(prod.risk_factors)}")
+        product_found = False
+        
+        # Check for product-specific questions by querying mem0
+        available_products = self.list_available_products()
+        
+        for prod_code in available_products:
+            if prod_code.lower() in question_lower:
+                product_found = True
+                prod = self.get_product_definition(prod_code)
+                
+                if prod:
+                    answer_parts.append(f"\n## 📦 Product Definition (from mem0): {prod.product_name}\n")
+                    answer_parts.append(f"**Product Code:** {prod.product_code}\n")
+                    answer_parts.append(f"**Total Risk Factors:** {len(prod.risk_factors)}\n")
+                    
+                    answer_parts.append("\n### 🎯 Risk Factors:\n")
                     for rf in prod.risk_factors:
-                        answer_parts.append(f"  - {rf.risk_factor_name} (weight: {rf.weight})")
+                        answer_parts.append(f"**{rf.risk_factor_name}**")
+                        answer_parts.append(f"  - Subject: {rf.risk_subject}")
+                        answer_parts.append(f"  - Description: {rf.description}")
+                        answer_parts.append(f"  - Weight: {rf.weight}")
+                        answer_parts.append(f"  - Required: {'Yes' if rf.required else 'No'}\n")
+                    
+                    # Add coverage options
+                    if prod.coverage_options:
+                        answer_parts.append("\n### 🛡️ Coverage Options:\n")
+                        for cov_type, cov_details in prod.coverage_options.items():
+                            answer_parts.append(f"**{cov_type.replace('_', ' ').title()}:** {cov_details}\n")
+        
+        # Check for general risk factor questions
+        if not product_found and ('risk factor' in question_lower or 'factor' in question_lower):
+            # Query mem0 for all risk factors
+            all_risk_factors = set()
+            for prod_code in available_products:
+                prod = self.get_product_definition(prod_code)
+                if prod:
+                    for rf in prod.risk_factors:
+                        all_risk_factors.add((rf.risk_subject, rf.risk_factor_name, rf.description))
+            
+            if all_risk_factors:
+                answer_parts.append("\n## 🎯 Available Risk Factors (from mem0):\n")
+                for subject, name, desc in sorted(all_risk_factors):
+                    answer_parts.append(f"**{name}** ({subject})")
+                    answer_parts.append(f"  {desc}\n")
+        
+        # Check for product list questions
+        if 'product' in question_lower and ('list' in question_lower or 'available' in question_lower or 'what' in question_lower):
+            if not product_found:
+                if available_products:
+                    answer_parts.append("\n## 📦 Available Products (from mem0):\n")
+                    for prod_code in available_products:
+                        prod = self.get_product_definition(prod_code)
+                        if prod:
+                            answer_parts.append(f"**{prod.product_name}** (`{prod_code}`)")
+                            answer_parts.append(f"  - {len(prod.risk_factors)} risk factors")
+                            answer_parts.append(f"  - {len(prod.coverage_options)} coverage options\n")
+                else:
+                    answer_parts.append("\n## ⚠️ No Products Available\n")
+                    answer_parts.append("No product definitions found in mem0. Use `store_product_to_memory()` to add products.\n")
         
         if not answer_parts:
-            answer_parts.append("I don't have specific information about that. Please try rephrasing your question or ask about:")
-            answer_parts.append("- Available products (Monthly-Comfort, Monthly-Economy, Monthly-Turbo)")
-            answer_parts.append("- Risk factors and their categories")
-            answer_parts.append("- Coverage options and limits")
+            if not available_products:
+                answer_parts.append("## ⚠️ No Knowledge Available\n")
+                answer_parts.append("The agent's mem0 is empty. Please load or store product definitions first.\n")
+                answer_parts.append("\n**To get started:**")
+                answer_parts.append("1. Use `store_product_to_memory()` to add product definitions")
+                answer_parts.append("2. Use `load_product_from_rules_dir()` to import from rule files")
+                answer_parts.append("3. Run the bootstrap script: `python bootstrap_product_memory.py --sample-data`")
+            else:
+                answer_parts.append("## ℹ️ I can help you with:\n")
+                answer_parts.append("**Available Products (from mem0):**")
+                for prod_code in available_products:
+                    answer_parts.append(f"  - {prod_code}")
+                answer_parts.append("\n**Topics I know about:**")
+                answer_parts.append("  - Risk factors and their definitions")
+                answer_parts.append("  - Coverage options and limits")
+                answer_parts.append("  - Product configurations")
+                answer_parts.append("  - Assessment rules")
+                answer_parts.append("\n**Example questions:**")
+                answer_parts.append("  - Tell me about [product name]")
+                answer_parts.append("  - What risk factors are available?")
+                answer_parts.append("  - List all available products")
         
         answer = "\n".join(answer_parts)
         
@@ -572,7 +811,7 @@ class ProductDefinitionAgent:
         if self.use_memory:
             self.learn_from_interaction("query", {
                 "query": question,
-                "response": answer[:100]
+                "response": answer[:200]
             })
         
         return answer
