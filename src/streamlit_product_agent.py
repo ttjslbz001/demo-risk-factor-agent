@@ -1,11 +1,11 @@
 """
-Streamlit App for Memory-Based Product Definition Agent
+Streamlit App for Pure Memory-Driven Product Definition Agent
 
-This app demonstrates a memory-enhanced agent that can:
-- Answer questions about risk factors and products
-- Learn from interactions
-- Search knowledge using semantic search
-- Provide context-aware responses
+This app demonstrates a pure memory-driven agent that:
+- Stores all knowledge in mem0 vector database
+- Uses semantic search to retrieve information
+- Zero hardcoded knowledge - everything from memory
+- Stateless and horizontally scalable architecture
 """
 
 import streamlit as st
@@ -20,7 +20,7 @@ from datetime import datetime
 
 # Page configuration
 st.set_page_config(
-    page_title="Product Definition Agent - Memory-Based",
+    page_title="Product Definition Agent - Pure Memory",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -70,16 +70,15 @@ st.markdown("""
 def init_agent():
     """Initialize the product definition agent (cached)"""
     return ProductDefinitionAgent(
-        use_memory=True,
-        agent_id="product_definition_agent",
-        user_id="system"
+        ## agent_id="streamlit_product_agent",
+        user_id="user_123"
     )
 
 
 def main():
     # Header
-    st.markdown('<div class="main-header">🧠 Memory-Based Product Definition Agent</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-header">Ask questions about risk factors, products, and insurance knowledge</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">🧠 Pure Memory-Driven Product Agent</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-header">Semantic search powered by mem0 + Milvus | Zero hardcoded knowledge</div>', unsafe_allow_html=True)
     
     # Initialize agent
     try:
@@ -94,32 +93,32 @@ def main():
         
         # Memory stats
         st.subheader("📊 Memory Statistics")
-        memory_stats = agent.get_memory_stats()
+        memory_stats = agent.get_stats()
         
-        if memory_stats.get("enabled", False):
-            st.success("✅ Memory Enabled")
-            if "total_memories" in memory_stats:
-                st.metric("Total Memories", memory_stats["total_memories"])
-            st.info(f"Agent ID: {memory_stats.get('agent_id', 'N/A')}")
-        else:
-            st.warning("⚠️ Memory Not Enabled")
-            st.info(memory_stats.get("message", "Memory disabled"))
+        st.success("✅ Memory Enabled")
+        st.metric("Total Memories", memory_stats.get("total_memories", 0))
+        st.metric("Products", memory_stats.get("products", 0))
+        st.info(f"Agent ID: {memory_stats.get('agent_id', 'N/A')}")
+        st.info(f"User ID: {memory_stats.get('user_id', 'N/A')}")
         
         st.divider()
         
         # Agent info
         st.subheader("ℹ️ Agent Info")
         st.write(f"**Agent Type:** Product Definition")
-        st.write(f"**Memory-Based:** Yes")
-        st.write(f"**Learning:** Enabled")
+        st.write(f"**Architecture:** Pure Memory-Driven")
+        st.write(f"**Backend:** mem0 + Milvus")
         
         st.divider()
         
         # Available products
         st.subheader("📦 Available Products")
-        products = agent.list_available_products()
-        for prod in products:
-            st.write(f"• {prod}")
+        products = agent.list_products()
+        if products:
+            for prod in products:
+                st.write(f"• {prod}")
+        else:
+            st.warning("No products loaded. Run bootstrap script.")
         
         st.divider()
         
@@ -142,7 +141,7 @@ def main():
     # Tab 1: Ask Questions
     with tab1:
         st.header("Ask the Agent")
-        st.write("The agent uses both hardcoded definitions and learned knowledge from memory to answer your questions.")
+        st.write("The agent searches its memory database to find relevant information and answer your questions.")
         
         # Sample questions
         if st.session_state.get('show_samples', False):
@@ -175,16 +174,39 @@ def main():
                 st.rerun()
         
         if ask_button and question:
-            with st.spinner("🤔 Thinking..."):
+            with st.spinner("🔍 Searching knowledge base..."):
                 try:
-                    answer = agent.answer_question(question)
+                    # Use semantic search to answer the question
+                    results = agent.search(question, limit=5)
                     
-                    st.markdown("### 💡 Answer")
-                    # Render the answer as markdown for better formatting
-                    st.markdown(answer)
+                    st.markdown("### 💡 Search Results")
+                    
+                    if results:
+                        # Check if question is about products
+                        if any(word in question.lower() for word in ['product', 'available', 'list']):
+                            products = agent.list_products()
+                            if products:
+                                st.markdown("**Available Products:**")
+                                for prod in products:
+                                    st.write(f"• {prod}")
+                                st.divider()
+                        
+                        # Show search results
+                        for idx, result in enumerate(results, 1):
+                            with st.expander(f"Result {idx} - Relevance: {result.get('score', 0):.3f}", expanded=(idx==1)):
+                                st.markdown(result['text'])
+                                
+                                # Show metadata
+                                metadata = result.get('metadata', {})
+                                if metadata:
+                                    st.caption("**Metadata:**")
+                                    for key, value in metadata.items():
+                                        st.caption(f"  • {key}: {value}")
+                    else:
+                        st.info("No relevant information found. Try rephrasing your question or check if knowledge is loaded.")
                     
                     # Show timestamp
-                    st.caption(f"Answered at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                    st.caption(f"Searched at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
                     
                 except Exception as e:
                     st.error(f"❌ Error: {str(e)}")
@@ -211,7 +233,7 @@ def main():
         if search_button and search_query:
             with st.spinner("🔍 Searching..."):
                 try:
-                    results = agent.query_knowledge(search_query, limit=search_limit)
+                    results = agent.search(search_query, limit=search_limit)
                     
                     if results:
                         st.success(f"✅ Found {len(results)} results")
@@ -240,46 +262,58 @@ def main():
         st.write("View detailed product definitions and risk factors.")
         
         # Product selector
-        products = agent.list_available_products()
-        selected_product = st.selectbox("Select Product:", products)
+        products = agent.list_products()
         
-        if st.button("📋 Get Definition", type="primary"):
-            with st.spinner("Loading..."):
-                try:
-                    product_knowledge = agent.get_product_knowledge(selected_product)
-                    product_def = product_knowledge.get('definition')
-                    
-                    if product_def:
-                        # Product overview
-                        st.subheader(f"📦 {product_def.product_name}")
-                        st.write(f"**Product Code:** {product_def.product_code}")
+        if not products:
+            st.warning("⚠️ No products found in memory. Please run bootstrap script.")
+            st.code("python bootstrap_product_memory.py --sample-data")
+        else:
+            selected_product = st.selectbox("Select Product:", products)
+            
+            if st.button("📋 Get Definition", type="primary"):
+                with st.spinner("Loading..."):
+                    try:
+                        product_def = agent.get_product(selected_product)
                         
-                        # Risk factors
-                        st.markdown("### 🎯 Risk Factors")
-                        for rf in product_def.risk_factors:
-                            with st.expander(f"{rf.risk_factor_name} (Weight: {rf.weight})"):
-                                st.write(f"**Subject:** {rf.risk_subject}")
-                                st.write(f"**Description:** {rf.description}")
-                                st.write(f"**Required:** {'Yes' if rf.required else 'No'}")
-                                st.write(f"**Evaluation Rules:** {', '.join(rf.evaluation_rules)}")
-                        
-                        # Coverage options
-                        st.markdown("### 🛡️ Coverage Options")
-                        coverage = product_def.coverage_options
-                        for cov_type, cov_details in coverage.items():
-                            st.write(f"**{cov_type}:** {cov_details}")
-                        
-                        # Memory knowledge
-                        if product_knowledge.get('memory_knowledge'):
-                            st.markdown("### 🧠 Additional Knowledge from Memory")
-                            for idx, know in enumerate(product_knowledge['memory_knowledge'], 1):
-                                st.markdown(f'<div class="knowledge-card">{know["text"]}</div>', 
-                                          unsafe_allow_html=True)
-                    else:
-                        st.warning(f"No definition found for {selected_product}")
-                        
-                except Exception as e:
-                    st.error(f"❌ Error: {str(e)}")
+                        if product_def:
+                            # Product overview
+                            st.subheader(f"📦 {product_def.product_name}")
+                            st.write(f"**Product Code:** {product_def.product_code}")
+                            
+                            # Risk factors
+                            st.markdown("### 🎯 Risk Factors")
+                            if product_def.risk_factors:
+                                for rf in product_def.risk_factors:
+                                    with st.expander(f"{rf.risk_factor_name} (Weight: {rf.weight})"):
+                                        st.write(f"**Subject:** {rf.risk_subject}")
+                                        st.write(f"**Description:** {rf.description}")
+                                        st.write(f"**Required:** {'Yes' if rf.required else 'No'}")
+                                        st.write(f"**Evaluation Rules:** {', '.join(rf.evaluation_rules)}")
+                            else:
+                                st.info("No risk factors defined")
+                            
+                            # Coverage options
+                            st.markdown("### 🛡️ Coverage Options")
+                            if product_def.coverage_options:
+                                for cov_type, cov_details in product_def.coverage_options.items():
+                                    st.write(f"**{cov_type}:** {cov_details}")
+                            else:
+                                st.info("No coverage options defined")
+                            
+                            # Assessment rules
+                            st.markdown("### 📜 Assessment Rules")
+                            if product_def.assessment_rules:
+                                st.write(f"Total rules: {len(product_def.assessment_rules)}")
+                                with st.expander("View Rules"):
+                                    for rule_id, rule_data in list(product_def.assessment_rules.items())[:5]:
+                                        st.write(f"**{rule_id}:** {rule_data.get('name', 'N/A')}")
+                            else:
+                                st.info("No assessment rules defined")
+                        else:
+                            st.warning(f"No definition found for {selected_product}")
+                            
+                    except Exception as e:
+                        st.error(f"❌ Error: {str(e)}")
     
     # Tab 4: Learning Dashboard
     with tab4:
@@ -289,14 +323,13 @@ def main():
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("📈 Learning Metrics")
-            memory_stats = agent.get_memory_stats()
+            st.subheader("📈 Memory Metrics")
+            memory_stats = agent.get_stats()
             
-            if memory_stats.get("enabled"):
-                st.metric("Total Memories", memory_stats.get("total_memories", 0))
-                st.metric("Agent ID", memory_stats.get("agent_id", "N/A"))
-            else:
-                st.info("Memory not enabled")
+            st.metric("Total Memories", memory_stats.get("total_memories", 0))
+            st.metric("Products", memory_stats.get("products", 0))
+            st.metric("Agent ID", memory_stats.get("agent_id", "N/A"))
+            st.metric("User ID", memory_stats.get("user_id", "N/A"))
         
         with col2:
             st.subheader("🔍 Search Risk Factors")
@@ -325,28 +358,32 @@ def main():
         
         st.divider()
         
-        # Learning examples
-        st.subheader("📚 How Learning Works")
+        # Memory architecture
+        st.subheader("📚 Memory Architecture")
         st.markdown("""
-        The agent learns in several ways:
+        The agent uses a **pure memory-driven architecture**:
         
-        1. **Query Learning**: Records what questions users ask and how they're answered
-        2. **Definition Requests**: Tracks which products and risk factors are frequently accessed
-        3. **Usage Patterns**: Identifies common workflows and preferences
-        4. **Validation Learning**: Remembers validation results and issues
+        1. **Vector Database**: All knowledge stored in mem0 + Milvus
+        2. **Semantic Search**: Finds relevant information using embeddings
+        3. **Zero Hardcoded Knowledge**: Everything loaded from memory
+        4. **Stateless Design**: Horizontally scalable
         
-        This enables the agent to:
-        - Provide better, more contextual answers over time
-        - Anticipate user needs based on patterns
-        - Continuously expand its knowledge base
-        - Maintain conversation history and context
+        **Knowledge Storage:**
+        - Product definitions and risk factors
+        - Assessment rules and coverage options
+        - Historical interactions and patterns
+        
+        **To add knowledge:**
+        - Use the bootstrap script to load products
+        - Products are stored as JSON in vector database
+        - Semantic search retrieves relevant information
         """)
         
-        st.info("💡 **Tip:** The more you interact with the agent, the smarter it becomes!")
+        st.info("💡 **Tip:** Run `python bootstrap_product_memory.py --sample-data` to load sample products!")
     
     # Footer
     st.divider()
-    st.caption("🧠 Memory-Based Product Definition Agent | Built with Streamlit + mem0 pattern")
+    st.caption("🧠 Pure Memory-Driven Product Agent | Built with Streamlit + mem0 + Milvus")
 
 
 if __name__ == "__main__":

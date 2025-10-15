@@ -3,6 +3,15 @@ Mem0 AI Memory Layer
 This module provides a wrapper around mem0ai for managing AI agent memory.
 """
 
+
+# Best-effort load of local .env so model config can be read
+try:
+    from dotenv import load_dotenv  # type: ignore[import-not-found]
+    load_dotenv()
+except Exception:
+    pass
+
+
 import os
 from typing import Optional, Dict, List, Any
 from mem0 import Memory
@@ -34,6 +43,7 @@ class MemoryLayer:
         """
 
         os.environ["OPENAI_API_KEY"] = "sk-nIDrG5iv1XNwFzRcaAzDgg"
+        MILVUS_DB_PATH =  os.environ["MILVUS_DB_PATH"]
    
         
         # Build the configuration
@@ -61,7 +71,7 @@ class MemoryLayer:
                 "config": {
                     "collection_name": "quickstart_mem0_with_milvus",
                     "embedding_model_dims": 1536,
-                    "url": "./milvus.db",  # Use local vector database for demo purpose
+                    "url": MILVUS_DB_PATH,  # Use local vector database for demo purpose
                 },
             }
         }

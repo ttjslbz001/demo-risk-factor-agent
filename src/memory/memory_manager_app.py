@@ -4,9 +4,8 @@ This app provides a user interface for managing AI agent memories using mem0ai.
 """
 
 import streamlit as st
-import json
 from datetime import datetime
-from test_memory import MemoryLayer
+from memory_layer import MemoryLayer
 
 # Page configuration
 st.set_page_config(

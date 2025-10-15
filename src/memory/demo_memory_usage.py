@@ -3,7 +3,7 @@ Demo script showing how to use the MemoryLayer programmatically
 This demonstrates various memory operations without the Streamlit UI
 """
 
-from test_memory import MemoryLayer
+from memory_layer import MemoryLayer
 from datetime import datetime
 import time
 
